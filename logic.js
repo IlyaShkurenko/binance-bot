@@ -41,8 +41,8 @@ var fs = require('fs').promises;
 var open = require('open');
 var Binance = require('node-binance-api');
 var binance = new Binance().options({
-    APIKEY: process.env.API_KEY,
-    APISECRET: process.env.SECRET_KEY
+    APIKEY: process.env.API_KEY || 'NRk3HsINGsmsDXZe9eA2w6r8zJ3iGTT9eyntWd4BhIjbmLAv2ixH9zncrf3dBR66',
+    APISECRET: process.env.SECRET_KEY || 'qGgU4Rd46e8dxHfCAEJSG99WdXCuiqB9wgHuaLj54iqGZqYGy3TvnZmjySMxxOfj'
 });
 var createOrderLong = function (answers) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, amount, crypto_1, symbol, _b, quantity, markPrice, pricePrecision, error_1;
@@ -50,7 +50,7 @@ var createOrderLong = function (answers) { return __awaiter(void 0, void 0, void
         switch (_c.label) {
             case 0:
                 _c.trys.push([0, 3, , 4]);
-                _a = answers.amount, amount = _a === void 0 ? 95 : _a, crypto_1 = answers.crypto;
+                _a = answers.amount, amount = _a === void 0 ? 1 : _a, crypto_1 = answers.crypto;
                 symbol = "".concat(crypto_1.toUpperCase(), "USDT");
                 return [4 /*yield*/, getQuantity(amount, symbol)];
             case 1:
