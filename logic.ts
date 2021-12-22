@@ -5,8 +5,8 @@ const open = require('open');
 
 const Binance = require('node-binance-api');
 const binance = new Binance().options({
-    APIKEY: process.env.API_KEY || 'NRk3HsINGsmsDXZe9eA2w6r8zJ3iGTT9eyntWd4BhIjbmLAv2ixH9zncrf3dBR66',
-    APISECRET: process.env.SECRET_KEY || 'qGgU4Rd46e8dxHfCAEJSG99WdXCuiqB9wgHuaLj54iqGZqYGy3TvnZmjySMxxOfj'
+    APIKEY: process.env.API_KEY,
+    APISECRET: process.env.SECRET_KEY
 });
 
 export const createOrderLong = async (answers: any) => {
