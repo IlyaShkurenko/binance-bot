@@ -42,9 +42,9 @@ export class BinanceBot {
         const takeProfitPrice = (parseFloat(markPrice) + markPrice * 0.02).toFixed(pricePrecision);
         const take = await this.binance.futuresSell(symbol, quantity, takeProfitPrice, { type: 'TAKE_PROFIT', stopPrice: takeProfitPrice });
         if(take.msg) throw new Error(take.msg)
-        const stopLossPrice = (parseFloat(markPrice) - markPrice * 0.002).toFixed(pricePrecision);
-        const stop = await this.binance.futuresMarketSell(symbol, quantity, { type: 'STOP_MARKET', stopPrice: stopLossPrice });
-        if(stop.msg) throw new Error(stop.msg)
+        // const stopLossPrice = (parseFloat(markPrice) - markPrice * 0.002).toFixed(pricePrecision);
+        // const stop = await this.binance.futuresMarketSell(symbol, quantity, { type: 'STOP_MARKET', stopPrice: stopLossPrice });
+        // if(stop.msg) throw new Error(stop.msg)
     }
 
     createOrderShort = async (answers: any) => {
@@ -68,10 +68,10 @@ export class BinanceBot {
         const takeProfitPrice = (parseFloat(markPrice) - markPrice * 0.02).toFixed(pricePrecision);
         const take = await this.binance.futuresBuy(symbol, quantity, takeProfitPrice, { type: 'TAKE_PROFIT', stopPrice: takeProfitPrice });
         if(take.msg) throw new Error(take.msg)
-        const stopLossPrice = (parseFloat(markPrice) + markPrice * 0.002).toFixed(pricePrecision);
-        console.log(stopLossPrice)
-        const stop = await this.binance.futuresMarketBuy(symbol, quantity, { type: 'STOP_MARKET', stopPrice: stopLossPrice });
-        if(stop.msg) throw new Error(stop.msg)
+        // const stopLossPrice = (parseFloat(markPrice) + markPrice * 0.002).toFixed(pricePrecision);
+        // console.log(stopLossPrice)
+        // const stop = await this.binance.futuresMarketBuy(symbol, quantity, { type: 'STOP_MARKET', stopPrice: stopLossPrice });
+        // if(stop.msg) throw new Error(stop.msg)
     }
 
     getQuantity = async (symbol: string) => {
