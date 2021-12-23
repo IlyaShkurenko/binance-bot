@@ -10,7 +10,10 @@ export class BinanceBot {
 
     constructor(config: { apiKey: string, apiSecret: string, defaultAmount: number, maxAmount: number }) {
         const { apiKey, apiSecret, defaultAmount, maxAmount } = config;
-        this.defaultAmount = defaultAmount;
+        if(!apiKey || !apiSecret) {
+            throw 'Provide binance credentials'
+        }
+        this.defaultAmount = defaultAmount ;
         this.maxAmount = maxAmount;
         this.binance = new Binance().options({
             APIKEY: apiKey,
@@ -136,7 +139,7 @@ export class BinanceBot {
 }
 
 export const saveBinanceConfig = async (answers: any) => {
-    const currentConfig = await getBinanceConfig();
+    const currentConfig = await getBinanceConfig() as any;
     const config: any = {};
     Object.keys(answers).forEach((i: string) => {
         const value = answers[i] || currentConfig[i];
@@ -154,8 +157,19 @@ export const saveBinanceConfig = async (answers: any) => {
 }
 
 export const getBinanceConfig = async () => {
-    const data = await fs.readFile("keys.json", 'utf-8');
-    return JSON.parse(data);
+    let data = {
+        apiKey: '',
+        apiSecret: '',
+        defaultAmount: 100,
+        maxAmount: 100
+    };
+    try {
+        const stringData = await fs.readFile("keys.json", 'utf-8');
+        data = JSON.parse(stringData);
+    } catch (e) {
+        console.log(e)
+    }
+    return data;
 }
 
 

@@ -241,6 +241,9 @@ var BinanceBot = /** @class */ (function () {
             });
         }); };
         var apiKey = config.apiKey, apiSecret = config.apiSecret, defaultAmount = config.defaultAmount, maxAmount = config.maxAmount;
+        if (!apiKey || !apiSecret) {
+            throw 'Provide binance credentials';
+        }
         this.defaultAmount = defaultAmount;
         this.maxAmount = maxAmount;
         this.binance = new Binance().options({
@@ -280,13 +283,29 @@ var saveBinanceConfig = function (answers) { return __awaiter(void 0, void 0, vo
 }); };
 exports.saveBinanceConfig = saveBinanceConfig;
 var getBinanceConfig = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var data;
+    var data, stringData, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, fs.readFile("keys.json", 'utf-8')];
+            case 0:
+                data = {
+                    apiKey: '',
+                    apiSecret: '',
+                    defaultAmount: 100,
+                    maxAmount: 100
+                };
+                _a.label = 1;
             case 1:
-                data = _a.sent();
-                return [2 /*return*/, JSON.parse(data)];
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, fs.readFile("keys.json", 'utf-8')];
+            case 2:
+                stringData = _a.sent();
+                data = JSON.parse(stringData);
+                return [3 /*break*/, 4];
+            case 3:
+                e_1 = _a.sent();
+                console.log(e_1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/, data];
         }
     });
 }); };
