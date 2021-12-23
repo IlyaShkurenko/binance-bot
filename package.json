@@ -7,8 +7,8 @@
     "bin": "./contact.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "NODE_ENV=dev ts-node-dev --respawn --transpile-only contact.ts",
-        "prod": "NODE_ENV=dev ts-node-dev --respawn --transpile-only contact.js",
+        "dev": "NODE_ENV=dev ts-node-dev --respawn --transpile-only main.ts",
+        "prod": "NODE_ENV=dev ts-node-dev --respawn --transpile-only main.js",
         "ts-node": "ts-node contact.ts",
         "build": "tsc"
     },

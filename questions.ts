@@ -15,3 +15,26 @@ export const questions: Array<Object> = [
         message: 'Enter Crypto'
     }
 ]
+
+export const keysQuestions: Array<Object> = [
+    {
+        type: 'input',
+        name: 'apiKey',
+        message: 'Enter API KEY'
+    },
+    {
+        type: 'input',
+        name: 'apiSecret',
+        message: 'Enter SECRET KEY'
+    },
+    {
+        type: 'number',
+        name: 'defaultAmount',
+        message: 'Enter default amount'
+    },
+    {
+        type: 'number',
+        name: 'maxAmount',
+        message: 'Enter max amount'
+    }
+]

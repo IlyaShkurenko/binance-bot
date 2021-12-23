@@ -43,60 +43,87 @@ dotenv.config({ path: __dirname + '/.env' });
 var commander = require("commander");
 var inquirer = require("inquirer");
 var chalk_1 = require("chalk");
-var logic_1 = require("./logic");
+var bot_1 = require("./bot");
 var questions_1 = require("./questions");
 commander
     .version('1.0.0')
     .description('Contact Management System');
 commander
-    .command('createFuturesOrderLong')
-    .description('Add an order')
+    .command('config')
+    .description('Set binance keys')
     .action(function () { return __awaiter(void 0, void 0, void 0, function () {
     var answers;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 console.log(chalk_1.default.yellow('=========*** Binance System ***=========='));
+                return [4 /*yield*/, inquirer.prompt(questions_1.keysQuestions)];
+            case 1:
+                answers = _a.sent();
+                return [4 /*yield*/, (0, bot_1.saveBinanceConfig)(answers)];
+            case 2:
+                _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}); });
+commander
+    .command('long')
+    .description('Add an order')
+    .action(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var answers, config, bot;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                console.log(chalk_1.default.yellow('=========*** Binance System ***=========='));
                 _a.label = 1;
             case 1:
-                if (!true) return [3 /*break*/, 4];
+                if (!true) return [3 /*break*/, 5];
                 return [4 /*yield*/, inquirer.prompt(questions_1.questions)];
             case 2:
                 answers = _a.sent();
                 console.log(new Date());
                 console.time('createOrderLong');
-                return [4 /*yield*/, (0, logic_1.createOrderLong)(answers)];
+                return [4 /*yield*/, (0, bot_1.getBinanceConfig)()];
             case 3:
+                config = _a.sent();
+                bot = new bot_1.BinanceBot(config);
+                return [4 /*yield*/, bot.createOrderLong(answers)];
+            case 4:
                 _a.sent();
                 console.timeEnd('createOrderLong');
                 return [3 /*break*/, 1];
-            case 4: return [2 /*return*/];
+            case 5: return [2 /*return*/];
         }
     });
 }); });
 commander
-    .command('createFuturesOrderShort')
+    .command('short')
     .description('Add an order')
     .action(function () { return __awaiter(void 0, void 0, void 0, function () {
-    var answers;
+    var answers, config, bot;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 console.log(chalk_1.default.yellow('=========*** Binance System ***=========='));
                 _a.label = 1;
             case 1:
-                if (!true) return [3 /*break*/, 4];
+                if (!true) return [3 /*break*/, 5];
                 return [4 /*yield*/, inquirer.prompt(questions_1.questions)];
             case 2:
                 answers = _a.sent();
                 console.log(new Date());
                 console.time('createOrderShort');
-                return [4 /*yield*/, (0, logic_1.createOrderShort)(answers)];
+                return [4 /*yield*/, (0, bot_1.getBinanceConfig)()];
             case 3:
+                config = _a.sent();
+                bot = new bot_1.BinanceBot(config);
+                return [4 /*yield*/, bot.createOrderShort(answers)];
+            case 4:
                 _a.sent();
                 console.timeEnd('createOrderShort');
                 return [3 /*break*/, 1];
-            case 4: return [2 /*return*/];
+            case 5: return [2 /*return*/];
         }
     });
 }); });
@@ -104,12 +131,17 @@ commander
     .command('sync')
     .description('Sync leverage with max notional')
     .action(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var config, bot;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 console.log(chalk_1.default.yellow('=========*** Binance System ***=========='));
-                return [4 /*yield*/, (0, logic_1.syncPositions)()];
+                return [4 /*yield*/, (0, bot_1.getBinanceConfig)()];
             case 1:
+                config = _a.sent();
+                bot = new bot_1.BinanceBot(config);
+                return [4 /*yield*/, bot.syncPositions()];
+            case 2:
                 _a.sent();
                 process.exit();
                 return [2 /*return*/];

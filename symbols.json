@@ -10,8 +10,8 @@
     "symbol": "ETHUSDT",
     "quantityPrecision": 3,
     "pricePrecision": 2,
-    "maxNotionalValue": 4000000,
-    "leverage": 9
+    "maxNotionalValue": 1500000,
+    "leverage": 15
   },
   {
     "symbol": "BCHUSDT",
@@ -220,8 +220,8 @@
     "symbol": "DOGEUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 6,
-    "maxNotionalValue": 250000,
-    "leverage": 20
+    "maxNotionalValue": 50000,
+    "leverage": 50
   },
   {
     "symbol": "SXPUSDT",
@@ -337,13 +337,6 @@
   },
   {
     "symbol": "SRMUSDT",
-    "quantityPrecision": 0,
-    "pricePrecision": 4,
-    "maxNotionalValue": 5000,
-    "leverage": 50
-  },
-  {
-    "symbol": "BZRXUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 4,
     "maxNotionalValue": 5000,

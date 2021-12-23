@@ -5,15 +5,24 @@ dotenv.config({ path: __dirname + '/.env' });
 import * as commander from 'commander'
 import * as inquirer from 'inquirer'
 import chalk from 'chalk'
-import { createOrderLong, createOrderShort, syncPositions } from './logic';
-import { questions } from './questions'
+import { BinanceBot, saveBinanceConfig, getBinanceConfig } from './bot';
+import { questions, keysQuestions } from './questions'
 
 commander
     .version('1.0.0')
     .description('Contact Management System')
 
 commander
-    .command('createFuturesOrderLong')
+    .command('config')
+    .description('Set binance keys')
+    .action(async () => {
+        console.log(chalk.yellow('=========*** Binance System ***=========='))
+        const answers = await inquirer.prompt(keysQuestions);
+        await saveBinanceConfig(answers);
+    })
+
+commander
+    .command('long')
     .description('Add an order')
     .action(async () => {
         console.log(chalk.yellow('=========*** Binance System ***=========='))
@@ -21,13 +30,15 @@ commander
             const answers = await inquirer.prompt(questions);
             console.log(new Date());
             console.time('createOrderLong');
-            await createOrderLong(answers)
+            const config = await getBinanceConfig();
+            const bot = new BinanceBot(config);
+            await bot.createOrderLong(answers)
             console.timeEnd('createOrderLong');
         }
     })
 
 commander
-    .command('createFuturesOrderShort')
+    .command('short')
     .description('Add an order')
     .action(async () => {
         console.log(chalk.yellow('=========*** Binance System ***=========='))
@@ -35,7 +46,9 @@ commander
             const answers = await inquirer.prompt(questions);
             console.log(new Date());
             console.time('createOrderShort');
-            await createOrderShort(answers)
+            const config = await getBinanceConfig();
+            const bot = new BinanceBot(config);
+            await bot.createOrderShort(answers)
             console.timeEnd('createOrderShort');
         }
     })
@@ -45,7 +58,9 @@ commander
     .description('Sync leverage with max notional')
     .action(async () => {
         console.log(chalk.yellow('=========*** Binance System ***=========='))
-        await syncPositions();
+        const config = await getBinanceConfig();
+        const bot = new BinanceBot(config);
+        await bot.syncPositions();
         process.exit()
     })
 
