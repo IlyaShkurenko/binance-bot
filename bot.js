@@ -167,7 +167,10 @@ var BinanceBot = /** @class */ (function () {
                     case 2:
                         markPrice = (_a.sent()).markPrice;
                         maxAmount = maxNotionalValue / leverage;
-                        if (maxAmount >= this.maxAmount) {
+                        if (this.defaultAmount < 100) {
+                            amount = this.defaultAmount;
+                        }
+                        else if (maxAmount >= this.maxAmount) {
                             amount = this.maxAmount;
                         }
                         else if (this.maxAmount > maxAmount && this.defaultAmount < maxAmount) {
@@ -176,13 +179,12 @@ var BinanceBot = /** @class */ (function () {
                         else {
                             amount = this.defaultAmount;
                         }
-                        console.log(amount);
                         console.timeEnd('price');
                         desiredNotional = amount * leverage;
                         if (desiredNotional > maxNotionalValue) {
                             desiredNotional = maxNotionalValue;
                         }
-                        quantity = ((desiredNotional) / markPrice).toFixed(quantityPrecision);
+                        quantity = ((desiredNotional - desiredNotional * 0.02) / markPrice).toFixed(quantityPrecision);
                         console.timeEnd('quantity');
                         return [2 /*return*/, { quantity: parseInt(quantity), markPrice: markPrice, pricePrecision: pricePrecision }];
                 }
