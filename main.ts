@@ -64,6 +64,17 @@ commander
         process.exit()
     })
 
+commander
+    .command('stream')
+    .description('Stream all futures')
+    .action(async () => {
+        console.log(chalk.yellow('=========*** Binance System ***=========='))
+        const config = await getBinanceConfig();
+        const bot = new BinanceBot(config);
+        await bot.priceStream();
+        process.exit()
+    })
+
 if (!process.argv.slice(2).length/* || !/[arudl]/.test(process.argv.slice(2))*/) {
     commander.outputHelp()
     process.exit()

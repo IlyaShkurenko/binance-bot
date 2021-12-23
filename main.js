@@ -148,6 +148,27 @@ commander
         }
     });
 }); });
+commander
+    .command('stream')
+    .description('Stream all futures')
+    .action(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var config, bot;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                console.log(chalk_1.default.yellow('=========*** Binance System ***=========='));
+                return [4 /*yield*/, (0, bot_1.getBinanceConfig)()];
+            case 1:
+                config = _a.sent();
+                bot = new bot_1.BinanceBot(config);
+                return [4 /*yield*/, bot.priceStream()];
+            case 2:
+                _a.sent();
+                process.exit();
+                return [2 /*return*/];
+        }
+    });
+}); });
 if (!process.argv.slice(2).length /* || !/[arudl]/.test(process.argv.slice(2))*/) {
     commander.outputHelp();
     process.exit();

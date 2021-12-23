@@ -68,7 +68,7 @@ var BinanceBot = /** @class */ (function () {
             });
         }); };
         this.openLongPosition = function (symbol, markPrice, quantity, pricePrecision) { return __awaiter(_this, void 0, void 0, function () {
-            var order, takeProfitPrice, take, stopLossPrice, stop;
+            var order, takeProfitPrice, take;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -85,12 +85,6 @@ var BinanceBot = /** @class */ (function () {
                         take = _a.sent();
                         if (take.msg)
                             throw new Error(take.msg);
-                        stopLossPrice = (parseFloat(markPrice) - markPrice * 0.002).toFixed(pricePrecision);
-                        return [4 /*yield*/, this.binance.futuresMarketSell(symbol, quantity, { type: 'STOP_MARKET', stopPrice: stopLossPrice })];
-                    case 3:
-                        stop = _a.sent();
-                        if (stop.msg)
-                            throw new Error(stop.msg);
                         return [2 /*return*/];
                 }
             });
@@ -120,7 +114,7 @@ var BinanceBot = /** @class */ (function () {
             });
         }); };
         this.openShortPosition = function (symbol, markPrice, quantity, pricePrecision) { return __awaiter(_this, void 0, void 0, function () {
-            var order, takeProfitPrice, take, stopLossPrice, stop;
+            var order, takeProfitPrice, take;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -137,13 +131,6 @@ var BinanceBot = /** @class */ (function () {
                         take = _a.sent();
                         if (take.msg)
                             throw new Error(take.msg);
-                        stopLossPrice = (parseFloat(markPrice) + markPrice * 0.002).toFixed(pricePrecision);
-                        console.log(stopLossPrice);
-                        return [4 /*yield*/, this.binance.futuresMarketBuy(symbol, quantity, { type: 'STOP_MARKET', stopPrice: stopLossPrice })];
-                    case 3:
-                        stop = _a.sent();
-                        if (stop.msg)
-                            throw new Error(stop.msg);
                         return [2 /*return*/];
                 }
             });
@@ -242,6 +229,13 @@ var BinanceBot = /** @class */ (function () {
                 }
             });
         }); };
+        this.priceStream = function () {
+            _this.binance.futuresMarkPriceStream(console.log);
+            _this.binance.futuresMarkPriceStream(function (data) {
+                console.log(data.length);
+                console.log(data);
+            });
+        };
         var apiKey = config.apiKey, apiSecret = config.apiSecret, defaultAmount = config.defaultAmount, maxAmount = config.maxAmount;
         if (!apiKey || !apiSecret) {
             throw 'Provide binance credentials';

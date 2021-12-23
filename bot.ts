@@ -137,6 +137,14 @@ export class BinanceBot {
         const data = await fs.readFile("symbols.json", 'utf-8');
         return JSON.parse(data);
     }
+
+    priceStream = () => {
+        this.binance.futuresMarkPriceStream( console.log );
+        this.binance.futuresMarkPriceStream((data: any) => {
+            console.log(data.length)
+            console.log(data)
+        })
+    }
 }
 
 export const saveBinanceConfig = async (answers: any) => {
