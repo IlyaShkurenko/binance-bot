@@ -15,6 +15,7 @@ client.on('connect', function(connection:any) {
         console.log('echo-protocol Connection Closed');
     });
     connection.on('message', function(message:any) {
+        console.log(new Date())
         if (message.type === 'utf8') {
             const data = JSON.parse(message.utf8Data)
             if(!symbols.length) {
@@ -47,8 +48,8 @@ const compareCurrentPriceWithPrevious = (currentData: { s: string, p: number, P:
             type = 'short';
         }
         if(difference > percent && findType === type) {
-            console.log(new Date())
-            console.log(`${ticker}: ${difference}, prev price: ${prevTicker.p}, current price: ${currentTicker.p}`)
+            const date = new Date()
+            console.log(`${ticker}: ${difference}, prev price: ${prevTicker.p}, current price: ${currentTicker.p}, date: ${date.getSeconds()}, ${date.getMilliseconds()}`)
         }
     };
     symbols = currentData;
