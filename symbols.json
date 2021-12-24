@@ -1006,5 +1006,26 @@
     "pricePrecision": 3,
     "maxNotionalValue": 5000,
     "leverage": 25
+  },
+  {
+    "symbol": "BTCUSDT_220325",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 375000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ETHUSDT_220325",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 375000,
+    "leverage": 20
+  },
+  {
+    "symbol": "PEOPLEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 20
   }
 ]

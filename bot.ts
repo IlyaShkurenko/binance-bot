@@ -1,3 +1,5 @@
+// import { connectWebSocketFuturesPrices } from "./websocket";
+
 const fs = require('fs').promises;
 const open = require('open');
 
@@ -139,11 +141,7 @@ export class BinanceBot {
     }
 
     priceStream = () => {
-        this.binance.futuresMarkPriceStream( console.log );
-        this.binance.futuresMarkPriceStream((data: any) => {
-            console.log(data.length)
-            console.log(data)
-        })
+        // connectWebSocketFuturesPrices()
     }
 }
 

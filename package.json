@@ -9,6 +9,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "NODE_ENV=dev ts-node-dev --respawn --transpile-only main.ts",
         "prod": "NODE_ENV=dev ts-node-dev --respawn --transpile-only main.js",
+        "socket": "NODE_ENV=dev ts-node-dev --respawn --transpile-only websocket.ts",
         "ts-node": "ts-node contact.ts",
         "build": "tsc"
     },
