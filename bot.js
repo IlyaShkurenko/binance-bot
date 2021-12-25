@@ -80,7 +80,7 @@ var BinanceBot = /** @class */ (function () {
                         console.timeEnd('order');
                         if (order.msg)
                             throw new Error(order.msg);
-                        takeProfitPrice = (parseFloat(markPrice) + markPrice * 0.02).toFixed(pricePrecision);
+                        takeProfitPrice = (parseFloat(markPrice) + markPrice * 0.012).toFixed(pricePrecision);
                         return [4 /*yield*/, this.binance.futuresSell(symbol, quantity, takeProfitPrice, { type: 'TAKE_PROFIT', stopPrice: takeProfitPrice })];
                     case 2:
                         take = _a.sent();
@@ -126,7 +126,7 @@ var BinanceBot = /** @class */ (function () {
                         console.timeEnd('order');
                         if (order.msg)
                             throw new Error(order.msg);
-                        takeProfitPrice = (parseFloat(markPrice) - markPrice * 0.02).toFixed(pricePrecision);
+                        takeProfitPrice = (parseFloat(markPrice) - markPrice * 0.012).toFixed(pricePrecision);
                         return [4 /*yield*/, this.binance.futuresBuy(symbol, quantity, takeProfitPrice, { type: 'TAKE_PROFIT', stopPrice: takeProfitPrice })];
                     case 2:
                         take = _a.sent();

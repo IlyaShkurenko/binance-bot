@@ -41,7 +41,7 @@ export class BinanceBot {
         console.timeEnd('order')
         if(order.msg) throw new Error(order.msg)
         // console.time('limitsell');
-        const takeProfitPrice = (parseFloat(markPrice) + markPrice * 0.02).toFixed(pricePrecision);
+        const takeProfitPrice = (parseFloat(markPrice) + markPrice * 0.012).toFixed(pricePrecision);
         const take = await this.binance.futuresSell(symbol, quantity, takeProfitPrice, { type: 'TAKE_PROFIT', stopPrice: takeProfitPrice });
         if(take.msg) throw new Error(take.msg)
         // const stopLossPrice = (parseFloat(markPrice) - markPrice * 0.002).toFixed(pricePrecision);
@@ -67,7 +67,7 @@ export class BinanceBot {
         const order = await this.binance.futuresMarketSell(symbol, quantity);
         console.timeEnd('order')
         if(order.msg) throw new Error(order.msg)
-        const takeProfitPrice = (parseFloat(markPrice) - markPrice * 0.02).toFixed(pricePrecision);
+        const takeProfitPrice = (parseFloat(markPrice) - markPrice * 0.012).toFixed(pricePrecision);
         const take = await this.binance.futuresBuy(symbol, quantity, takeProfitPrice, { type: 'TAKE_PROFIT', stopPrice: takeProfitPrice });
         if(take.msg) throw new Error(take.msg)
         // const stopLossPrice = (parseFloat(markPrice) + markPrice * 0.002).toFixed(pricePrecision);
