@@ -1,0 +1,1038 @@
+[
+  {
+    "symbol": "BTCUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 7500000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ETHUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 1500000,
+    "leverage": 12
+  },
+  {
+    "symbol": "BCHUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "XRPUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "EOSUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "LTCUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "TRXUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ETCUSDT",
+    "quantityPrecision": 2,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "LINKUSDT",
+    "quantityPrecision": 2,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "XLMUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ADAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "XMRUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "DASHUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ZECUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "XTZUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BNBUSDT",
+    "quantityPrecision": 2,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ATOMUSDT",
+    "quantityPrecision": 2,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ONTUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "IOTAUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BATUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "VETUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "NEOUSDT",
+    "quantityPrecision": 2,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "QTUMUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "THETAUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ALGOUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ZILUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "KNCUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ZRXUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "COMPUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "OMGUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "DOGEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SXPUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "KAVAUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BANDUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "RLCUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "WAVESUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "MKRUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SNXUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "DOTUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "DEFIUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "YFIUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BALUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "CRVUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "TRBUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "YFIIUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "RUNEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SUSHIUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SRMUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "EGLDUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SOLUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ICXUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "STORJUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BLZUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "UNIUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "FTMUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "HNTUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ENJUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "FLMUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "TOMOUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "RENUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "KSMUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "NEARUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "AAVEUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "FILUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "RSRUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "LRCUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "MATICUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "OCEANUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "CVCUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BELUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "CTKUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "AXSUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ALPHAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ZENUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SKLUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "GRTUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "1INCHUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BTCBUSD",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 1000000,
+    "leverage": 20
+  },
+  {
+    "symbol": "AKROUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "CHZUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SANDUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ANKRUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "LUNAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BTSUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "LITUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "UNFIUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "DODOUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "REEFUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "RVNUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SFPUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "XEMUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BTCSTUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  },
+  {
+    "symbol": "COTIUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "CHRUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "MANAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ALICEUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "HBARUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ONEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "LINAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "STMXUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "DENTUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "CELRUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "HOTUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "MTLUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "OGNUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BTTUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "NKNUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "SCUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "DGBUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "1000SHIBUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ICPUSDT",
+    "quantityPrecision": 2,
+    "pricePrecision": 2,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "BAKEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "GTCUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "ETHBUSD",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 500000,
+    "leverage": 20
+  },
+  {
+    "symbol": "BTCDOMUSDT",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "KEEPUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 50
+  },
+  {
+    "symbol": "TLMUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "BNBBUSD",
+    "quantityPrecision": 2,
+    "pricePrecision": 3,
+    "maxNotionalValue": 100000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ADABUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 100000,
+    "leverage": 20
+  },
+  {
+    "symbol": "XRPBUSD",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 100000,
+    "leverage": 20
+  },
+  {
+    "symbol": "IOTXUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "DOGEBUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 100000,
+    "leverage": 20
+  },
+  {
+    "symbol": "AUDIOUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "RAYUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "C98USDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "MASKUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "ATAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "SOLBUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 100000,
+    "leverage": 20
+  },
+  {
+    "symbol": "FTTBUSD",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 100000,
+    "leverage": 20
+  },
+  {
+    "symbol": "DYDXUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 50000,
+    "leverage": 25
+  },
+  {
+    "symbol": "1000XECUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "GALAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 50000,
+    "leverage": 50
+  },
+  {
+    "symbol": "CELOUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "ARUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "KLAYUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "ARPAUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "NUUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "CTSIUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "LPTUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "ENSUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 5000,
+    "leverage": 25
+  },
+  {
+    "symbol": "BTCUSDT_220325",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 375000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ETHUSDT_220325",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 375000,
+    "leverage": 20
+  },
+  {
+    "symbol": "PEOPLEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ANTUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ROSEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  },
+  {
+    "symbol": "DUSKUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  }
+]

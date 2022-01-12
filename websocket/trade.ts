@@ -1,3 +1,5 @@
+import {getBinanceConfig} from "../bot";
+
 const WebSocketClient = require('websocket').client;
 const client = new WebSocketClient();
 let symbols: { s: string, p: number, P: number }[]  = []
@@ -27,12 +29,17 @@ client.on('connect', function(connection:any) {
 const symbolLastPrices: any = {
     ETHUSDT: []
 }
-Object.keys(symbolLastPrices).forEach(symbol => {
-    client.connect(`wss://fstream.binance.com/ws/${symbol.toLowerCase()}@aggTrade`);
+
+let positionType: string;
+getBinanceConfig().then(data => {
+    positionType = data.positionType;
+    Object.keys(symbolLastPrices).forEach(symbol => {
+        client.connect(`wss://fstream.binance.com/ws/${symbol.toLowerCase()}@aggTrade`);
+    })
 })
 
-const compareCurrentPriceWithPrevious = (currentData: { s: string, p: string, E: number }, percent: number) => {
-    const findType = 'long';
+const compareCurrentPriceWithPrevious = async (currentData: { s: string, p: string, E: number }, percent: number) => {
+    console.log(positionType)
     let currentTicker = symbolLastPrices[currentData.s];
     const symbolObj = {
         price: parseFloat(currentData.p),
@@ -59,7 +66,7 @@ const compareCurrentPriceWithPrevious = (currentData: { s: string, p: string, E:
             }
             //console.log(difference)
             //console.log(difference)
-            if(difference > percent && findType === type) {
+            if(difference > percent && (positionType ? positionType === type : true)) {
                 const date = new Date()
                 console.log(`${functionType}, ${ticker}: ${difference}, prev price: ${prevPrice}, current price: ${currentPrice}, date: ${date.getSeconds()}, ${date.getMilliseconds()}`)
             }

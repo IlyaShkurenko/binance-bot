@@ -58,7 +58,7 @@ var BinanceBot = /** @class */ (function () {
                         return [4 /*yield*/, this.openLongPosition(symbol, markPrice, quantity, pricePrecision)];
                     case 2:
                         _b.sent();
-                        open("https://www.tradingview.com/chart/hMro8xGq/?symbol=BINANCE%3A".concat(symbol, "PERP"), { app: { name: 'google chrome' } });
+                        open("".concat(this.tradingViewLink, "?symbol=BINANCE%3A").concat(symbol, "PERP"), { app: { name: 'google chrome' } });
                         return [2 /*return*/];
                     case 3:
                         error_1 = _b.sent();
@@ -104,7 +104,7 @@ var BinanceBot = /** @class */ (function () {
                         return [4 /*yield*/, this.openShortPosition(symbol, markPrice, quantity, pricePrecision)];
                     case 2:
                         _b.sent();
-                        open("https://www.tradingview.com/chart/hMro8xGq/?symbol=BINANCE%3A".concat(symbol, "PERP"), { app: { name: 'google chrome' } });
+                        open("".concat(this.tradingViewLink, "?symbol=BINANCE%3A").concat(symbol, "PERP"), { app: { name: 'google chrome' } });
                         return [2 /*return*/];
                     case 3:
                         error_2 = _b.sent();
@@ -144,7 +144,7 @@ var BinanceBot = /** @class */ (function () {
                         console.time('quantity');
                         console.time('file');
                         amount = 100;
-                        return [4 /*yield*/, this.getSymbolsData()];
+                        return [4 /*yield*/, this.getExchangeInfo()];
                     case 1:
                         symbolsData = _a.sent();
                         console.timeEnd('file');
@@ -179,11 +179,12 @@ var BinanceBot = /** @class */ (function () {
             });
         }); };
         this.syncPositions = function () { return __awaiter(_this, void 0, void 0, function () {
-            var _a, exchangeInfo, risk_1, data, error_3;
+            var symbols_1, _a, exchangeInfo, risk_1, data, error_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _b.trys.push([0, 3, , 4]);
+                        _b.trys.push([0, 4, , 5]);
+                        symbols_1 = {};
                         return [4 /*yield*/, Promise.all([
                                 this.binance.futuresExchangeInfo(),
                                 this.binance.futuresPositionRisk(),
@@ -193,6 +194,9 @@ var BinanceBot = /** @class */ (function () {
                         data = exchangeInfo.symbols.map(function (_a) {
                             var symbol = _a.symbol, quantityPrecision = _a.quantityPrecision, pricePrecision = _a.pricePrecision;
                             var _b = risk_1.find(function (i) { return i.symbol === symbol; }), maxNotionalValue = _b.maxNotionalValue, leverage = _b.leverage;
+                            if (symbol.includes('USDT')) {
+                                symbols_1[symbol] = [];
+                            }
                             return {
                                 symbol: symbol,
                                 quantityPrecision: quantityPrecision,
@@ -201,7 +205,7 @@ var BinanceBot = /** @class */ (function () {
                                 leverage: parseInt(leverage)
                             };
                         });
-                        return [4 /*yield*/, fs.writeFile("symbols.json", JSON.stringify(data, null, 2), function (err) {
+                        return [4 /*yield*/, fs.writeFile("exchange-symbols.json", JSON.stringify(data, null, 2), function (err) {
                                 if (err) {
                                     return console.log(err);
                                 }
@@ -209,13 +213,32 @@ var BinanceBot = /** @class */ (function () {
                             })];
                     case 2:
                         _b.sent();
-                        console.log(data.length);
-                        return [3 /*break*/, 4];
+                        return [4 /*yield*/, fs.writeFile("symbols.json", JSON.stringify(symbols_1, null, 2), function (err) {
+                                if (err) {
+                                    return console.log(err);
+                                }
+                                console.log("The file was saved!");
+                            })];
                     case 3:
+                        _b.sent();
+                        console.log(data.length);
+                        return [3 /*break*/, 5];
+                    case 4:
                         error_3 = _b.sent();
                         console.log(error_3);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        }); };
+        this.getExchangeInfo = function () { return __awaiter(_this, void 0, void 0, function () {
+            var data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fs.readFile("exchange-symbols.json", 'utf-8')];
+                    case 1:
+                        data = _a.sent();
+                        return [2 /*return*/, JSON.parse(data)];
                 }
             });
         }); };
@@ -233,12 +256,13 @@ var BinanceBot = /** @class */ (function () {
         this.priceStream = function () {
             // connectWebSocketFuturesPrices()
         };
-        var apiKey = config.apiKey, apiSecret = config.apiSecret, defaultAmount = config.defaultAmount, maxAmount = config.maxAmount;
+        var apiKey = config.apiKey, apiSecret = config.apiSecret, defaultAmount = config.defaultAmount, maxAmount = config.maxAmount, tradingViewLink = config.tradingViewLink;
         if (!apiKey || !apiSecret) {
             throw 'Provide binance credentials';
         }
         this.defaultAmount = defaultAmount;
         this.maxAmount = maxAmount;
+        this.tradingViewLink = tradingViewLink;
         this.binance = new Binance().options({
             APIKEY: apiKey,
             APISECRET: apiSecret
@@ -283,6 +307,8 @@ var getBinanceConfig = function () { return __awaiter(void 0, void 0, void 0, fu
                 data = {
                     apiKey: '',
                     apiSecret: '',
+                    positionType: '',
+                    tradingViewLink: '',
                     defaultAmount: 100,
                     maxAmount: 100
                 };

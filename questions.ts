@@ -36,5 +36,15 @@ export const keysQuestions: Array<Object> = [
         type: 'number',
         name: 'maxAmount',
         message: 'Enter max amount'
+    },
+    {
+        type: 'input',
+        name: 'positionType',
+        message: 'Enter position type'
+    },
+    {
+        type: 'input',
+        name: 'tradingViewLink',
+        message: 'Enter trading view link'
     }
 ]

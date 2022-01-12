@@ -9,14 +9,16 @@ export class BinanceBot {
     private readonly binance: any;
     private readonly defaultAmount: number;
     private readonly maxAmount: number;
+    private readonly tradingViewLink: string;
 
-    constructor(config: { apiKey: string, apiSecret: string, defaultAmount: number, maxAmount: number }) {
-        const { apiKey, apiSecret, defaultAmount, maxAmount } = config;
+    constructor(config: { apiKey: string, apiSecret: string, tradingViewLink: string, defaultAmount: number, maxAmount: number }) {
+        const { apiKey, apiSecret, defaultAmount, maxAmount, tradingViewLink } = config;
         if(!apiKey || !apiSecret) {
             throw 'Provide binance credentials'
         }
         this.defaultAmount = defaultAmount ;
         this.maxAmount = maxAmount;
+        this.tradingViewLink = tradingViewLink;
         this.binance = new Binance().options({
             APIKEY: apiKey,
             APISECRET: apiSecret
@@ -28,7 +30,7 @@ export class BinanceBot {
             const symbol = `${crypto.toUpperCase()}USDT`;
             const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol);
             await this.openLongPosition(symbol, markPrice, quantity, pricePrecision);
-            open(`https://www.tradingview.com/chart/hMro8xGq/?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
+            open(`${this.tradingViewLink}?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
             return
         } catch (error) {
             console.log(error)
@@ -55,7 +57,7 @@ export class BinanceBot {
             const symbol = `${crypto.toUpperCase()}USDT`;
             const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol);
             await this.openShortPosition(symbol, markPrice, quantity, pricePrecision);
-            open(`https://www.tradingview.com/chart/hMro8xGq/?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
+            open(`${this.tradingViewLink}?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
             return
         } catch (error) {
             console.log(error)
@@ -80,7 +82,7 @@ export class BinanceBot {
         console.time('quantity')
         console.time('file');
         let amount = 100;
-        const symbolsData = await this.getSymbolsData();
+        const symbolsData = await this.getExchangeInfo();
         console.timeEnd('file')
         const neededSymbolData = symbolsData.find((i:any) => i.symbol === symbol);
         const { leverage, quantityPrecision, pricePrecision, maxNotionalValue }:
@@ -109,12 +111,16 @@ export class BinanceBot {
 
     syncPositions = async () => {
         try {
+            const symbols: any = {};
             const [exchangeInfo, risk] = await Promise.all([
                 this.binance.futuresExchangeInfo(),
                 this.binance.futuresPositionRisk(),
             ]);
             const data = exchangeInfo.symbols.map(( { symbol, quantityPrecision, pricePrecision }: { symbol: string, quantityPrecision: number, pricePrecision: number }) => {
-                const { maxNotionalValue, leverage }: { leverage: string, maxNotionalValue: string } = risk.find((i:any) => i.symbol === symbol)
+                const { maxNotionalValue, leverage }: { leverage: string, maxNotionalValue: string } = risk.find((i:any) => i.symbol === symbol);
+                if(symbol.includes('USDT')) {
+                    symbols[symbol] = []
+                }
                 return {
                     symbol,
                     quantityPrecision,
@@ -123,7 +129,13 @@ export class BinanceBot {
                     leverage: parseInt(leverage)
                 }
             })
-            await fs.writeFile("symbols.json", JSON.stringify(data, null, 2), function(err: any) {
+            await fs.writeFile("exchange-symbols.json", JSON.stringify(data, null, 2), function(err: any) {
+                if(err) {
+                    return console.log(err);
+                }
+                console.log("The file was saved!");
+            });
+            await fs.writeFile("symbols.json", JSON.stringify(symbols, null, 2), function(err: any) {
                 if(err) {
                     return console.log(err);
                 }
@@ -135,6 +147,10 @@ export class BinanceBot {
         }
     }
 
+    getExchangeInfo = async () => {
+        const data = await fs.readFile("exchange-symbols.json", 'utf-8');
+        return JSON.parse(data);
+    }
     getSymbolsData = async () => {
         const data = await fs.readFile("symbols.json", 'utf-8');
         return JSON.parse(data);
@@ -167,6 +183,8 @@ export const getBinanceConfig = async () => {
     let data = {
         apiKey: '',
         apiSecret: '',
+        positionType: '',
+        tradingViewLink: '',
         defaultAmount: 100,
         maxAmount: 100
     };
