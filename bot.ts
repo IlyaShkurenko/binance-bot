@@ -39,6 +39,7 @@ export class BinanceBot {
 
     openLongPosition = async (symbol: string, markPrice: any, quantity: number, pricePrecision: number) => {
         console.time('order')
+        console.log(symbol + ' ' + quantity)
         const order = await this.binance.futuresMarketBuy(symbol, quantity);
         console.timeEnd('order')
         if(order.msg) throw new Error(order.msg)

@@ -74,6 +74,7 @@ var BinanceBot = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.time('order');
+                        console.log(symbol + ' ' + quantity);
                         return [4 /*yield*/, this.binance.futuresMarketBuy(symbol, quantity)];
                     case 1:
                         order = _a.sent();
