@@ -173,7 +173,7 @@ var BinanceBot = /** @class */ (function () {
                         if (desiredNotional > maxNotionalValue) {
                             desiredNotional = maxNotionalValue;
                         }
-                        quantity = ((desiredNotional - desiredNotional * 0.02) / markPrice).toFixed(quantityPrecision);
+                        quantity = ((desiredNotional * 0.99) / markPrice).toFixed(quantityPrecision);
                         console.timeEnd('quantity');
                         return [2 /*return*/, { quantity: parseInt(quantity), markPrice: markPrice, pricePrecision: pricePrecision }];
                 }
@@ -181,6 +181,7 @@ var BinanceBot = /** @class */ (function () {
         }); };
         this.syncPositions = function () { return __awaiter(_this, void 0, void 0, function () {
             var symbols_1, _a, exchangeInfo, risk_1, data, error_3;
+            var _this = this;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -198,12 +199,13 @@ var BinanceBot = /** @class */ (function () {
                             if (symbol.includes('USDT')) {
                                 symbols_1[symbol] = [];
                             }
+                            var symbolLeverage = parseInt(leverage);
                             return {
                                 symbol: symbol,
                                 quantityPrecision: quantityPrecision,
                                 pricePrecision: pricePrecision,
                                 maxNotionalValue: parseInt(maxNotionalValue),
-                                leverage: parseInt(leverage)
+                                leverage: symbolLeverage && _this.maxLeverage && symbolLeverage > _this.maxLeverage ? _this.maxLeverage : parseInt(leverage)
                             };
                         });
                         return [4 /*yield*/, fs.writeFile("exchange-symbols.json", JSON.stringify(data, null, 2), function (err) {
@@ -257,13 +259,14 @@ var BinanceBot = /** @class */ (function () {
         this.priceStream = function () {
             // connectWebSocketFuturesPrices()
         };
-        var apiKey = config.apiKey, apiSecret = config.apiSecret, defaultAmount = config.defaultAmount, maxAmount = config.maxAmount, tradingViewLink = config.tradingViewLink;
+        var apiKey = config.apiKey, apiSecret = config.apiSecret, defaultAmount = config.defaultAmount, maxAmount = config.maxAmount, tradingViewLink = config.tradingViewLink, maxLeverage = config.maxLeverage;
         if (!apiKey || !apiSecret) {
             throw 'Provide binance credentials';
         }
         this.defaultAmount = defaultAmount;
         this.maxAmount = maxAmount;
         this.tradingViewLink = tradingViewLink;
+        this.maxLeverage = parseInt(maxLeverage);
         this.binance = new Binance().options({
             APIKEY: apiKey,
             APISECRET: apiSecret
@@ -310,6 +313,7 @@ var getBinanceConfig = function () { return __awaiter(void 0, void 0, void 0, fu
                     apiSecret: '',
                     positionType: '',
                     tradingViewLink: '',
+                    maxLeverage: '',
                     defaultAmount: 100,
                     maxAmount: 100
                 };

@@ -10,15 +10,23 @@ export class BinanceBot {
     private readonly defaultAmount: number;
     private readonly maxAmount: number;
     private readonly tradingViewLink: string;
+    private readonly maxLeverage: number;
 
-    constructor(config: { apiKey: string, apiSecret: string, tradingViewLink: string, defaultAmount: number, maxAmount: number }) {
-        const { apiKey, apiSecret, defaultAmount, maxAmount, tradingViewLink } = config;
+    constructor(config: {
+        apiKey: string,
+        apiSecret: string,
+        maxLeverage: string,
+        tradingViewLink: string,
+        defaultAmount: number,
+        maxAmount: number }) {
+        const { apiKey, apiSecret, defaultAmount, maxAmount, tradingViewLink, maxLeverage } = config;
         if(!apiKey || !apiSecret) {
             throw 'Provide binance credentials'
         }
         this.defaultAmount = defaultAmount ;
         this.maxAmount = maxAmount;
         this.tradingViewLink = tradingViewLink;
+        this.maxLeverage = parseInt(maxLeverage);
         this.binance = new Binance().options({
             APIKEY: apiKey,
             APISECRET: apiSecret
@@ -105,7 +113,7 @@ export class BinanceBot {
         if(desiredNotional > maxNotionalValue) {
             desiredNotional = maxNotionalValue;
         }
-        const quantity = ((desiredNotional - desiredNotional * 0.02) / markPrice).toFixed(quantityPrecision);
+        const quantity = ((desiredNotional * 0.99) / markPrice).toFixed(quantityPrecision);
         console.timeEnd('quantity');
         return { quantity: parseInt(quantity), markPrice, pricePrecision }
     }
@@ -122,12 +130,13 @@ export class BinanceBot {
                 if(symbol.includes('USDT')) {
                     symbols[symbol] = []
                 }
+                const symbolLeverage = parseInt(leverage);
                 return {
                     symbol,
                     quantityPrecision,
                     pricePrecision,
                     maxNotionalValue: parseInt(maxNotionalValue),
-                    leverage: parseInt(leverage)
+                    leverage: symbolLeverage && this.maxLeverage && symbolLeverage > this.maxLeverage ? this.maxLeverage : parseInt(leverage)
                 }
             })
             await fs.writeFile("exchange-symbols.json", JSON.stringify(data, null, 2), function(err: any) {
@@ -186,6 +195,7 @@ export const getBinanceConfig = async () => {
         apiSecret: '',
         positionType: '',
         tradingViewLink: '',
+        maxLeverage: '',
         defaultAmount: 100,
         maxAmount: 100
     };

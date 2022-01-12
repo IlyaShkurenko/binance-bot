@@ -48,5 +48,10 @@ exports.keysQuestions = [
         type: 'input',
         name: 'tradingViewLink',
         message: 'Enter trading view link'
+    },
+    {
+        type: 'input',
+        name: 'maxLeverage',
+        message: 'Enter max leverage'
     }
 ];
