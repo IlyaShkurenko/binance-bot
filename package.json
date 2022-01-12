@@ -8,7 +8,6 @@
     "scripts": {
         "dev": "NODE_ENV=dev ts-node-dev --respawn --transpile-only main.ts",
         "prod": "NODE_ENV=dev ts-node-dev --respawn --transpile-only main.js",
-        "socket-price": "NODE_ENV=dev ts-node-dev --respawn --transpile-only ./websocket/price.ts",
         "socket-trade": "NODE_ENV=dev ts-node-dev --respawn --transpile-only ./websocket/trade.ts",
         "test": "NODE_ENV=dev ts-node-dev --respawn --transpile-only ./tests/index.ts",
         "ts-node": "ts-node contact.ts",

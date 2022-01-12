@@ -19,6 +19,11 @@ exports.questions = [
     }
 ];
 exports.keysQuestions = [
+    // {
+    //     type: 'input',
+    //     name: 'isTest',
+    //     message: 'Test mode?'
+    // },
     {
         type: 'input',
         name: 'apiKey',

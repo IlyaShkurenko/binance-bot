@@ -32,11 +32,11 @@ export class BinanceBot {
             APISECRET: apiSecret
         });
     }
-    createOrderLong = async (answers: any) => {
+    createOrderLong = async (answers: any, debugMode: Boolean) => {
         try {
             let { crypto }: { crypto: string } = answers;
             const symbol = `${crypto.toUpperCase()}USDT`;
-            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol);
+            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol, debugMode);
             await this.openLongPosition(symbol, markPrice, quantity, pricePrecision);
             open(`${this.tradingViewLink}?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
             return
@@ -60,11 +60,11 @@ export class BinanceBot {
         // if(stop.msg) throw new Error(stop.msg)
     }
 
-    createOrderShort = async (answers: any) => {
+    createOrderShort = async (answers: any, debugMode: Boolean) => {
         try {
             let { crypto }: { crypto: string } = answers;
             const symbol = `${crypto.toUpperCase()}USDT`;
-            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol);
+            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol, debugMode);
             await this.openShortPosition(symbol, markPrice, quantity, pricePrecision);
             open(`${this.tradingViewLink}?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
             return
@@ -87,11 +87,11 @@ export class BinanceBot {
         // if(stop.msg) throw new Error(stop.msg)
     }
 
-    getQuantity = async (symbol: string) => {
+    getQuantity = async (symbol: string, debugMode: Boolean) => {
         console.time('quantity')
         console.time('file');
-        let amount = 100;
-        const symbolsData = await this.getExchangeInfo();
+        let amount
+        const symbolsData = await getExchangeInfo();
         console.timeEnd('file')
         const neededSymbolData = symbolsData.find((i:any) => i.symbol === symbol);
         const { leverage, quantityPrecision, pricePrecision, maxNotionalValue }:
@@ -99,7 +99,9 @@ export class BinanceBot {
         console.time('price')
         const { markPrice } = await this.binance.futuresMarkPrice(symbol);
         const maxAmount = maxNotionalValue / leverage;
-        if(this.defaultAmount < 100) {
+        if(debugMode) {
+            amount = 1
+        } else if(this.defaultAmount < 100) {
             amount = this.defaultAmount;
         } else if(maxAmount >= this.maxAmount) {
             amount = this.maxAmount
@@ -156,19 +158,6 @@ export class BinanceBot {
             console.log(error)
         }
     }
-
-    getExchangeInfo = async () => {
-        const data = await fs.readFile("exchange-symbols.json", 'utf-8');
-        return JSON.parse(data);
-    }
-    getSymbolsData = async () => {
-        const data = await fs.readFile("symbols.json", 'utf-8');
-        return JSON.parse(data);
-    }
-
-    priceStream = () => {
-        // connectWebSocketFuturesPrices()
-    }
 }
 
 export const saveBinanceConfig = async (answers: any) => {
@@ -206,6 +195,15 @@ export const getBinanceConfig = async () => {
         console.log(e)
     }
     return data;
+}
+
+export const getExchangeInfo = async () => {
+    const data = await fs.readFile("exchange-symbols.json", 'utf-8');
+    return JSON.parse(data);
+}
+export const getSymbolsData = async () => {
+    const data = await fs.readFile("symbols.json", 'utf-8');
+    return JSON.parse(data);
 }
 
 

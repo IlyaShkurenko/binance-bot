@@ -37,14 +37,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getBinanceConfig = exports.saveBinanceConfig = exports.BinanceBot = void 0;
+exports.getSymbolsData = exports.getExchangeInfo = exports.getBinanceConfig = exports.saveBinanceConfig = exports.BinanceBot = void 0;
 var fs = require('fs').promises;
 var open = require('open');
 var Binance = require('node-binance-api');
 var BinanceBot = /** @class */ (function () {
     function BinanceBot(config) {
         var _this = this;
-        this.createOrderLong = function (answers) { return __awaiter(_this, void 0, void 0, function () {
+        this.createOrderLong = function (answers, debugMode) { return __awaiter(_this, void 0, void 0, function () {
             var crypto_1, symbol, _a, quantity, markPrice, pricePrecision, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
@@ -52,7 +52,7 @@ var BinanceBot = /** @class */ (function () {
                         _b.trys.push([0, 3, , 4]);
                         crypto_1 = answers.crypto;
                         symbol = "".concat(crypto_1.toUpperCase(), "USDT");
-                        return [4 /*yield*/, this.getQuantity(symbol)];
+                        return [4 /*yield*/, this.getQuantity(symbol, debugMode)];
                     case 1:
                         _a = _b.sent(), quantity = _a.quantity, markPrice = _a.markPrice, pricePrecision = _a.pricePrecision;
                         return [4 /*yield*/, this.openLongPosition(symbol, markPrice, quantity, pricePrecision)];
@@ -91,7 +91,7 @@ var BinanceBot = /** @class */ (function () {
                 }
             });
         }); };
-        this.createOrderShort = function (answers) { return __awaiter(_this, void 0, void 0, function () {
+        this.createOrderShort = function (answers, debugMode) { return __awaiter(_this, void 0, void 0, function () {
             var crypto_2, symbol, _a, quantity, markPrice, pricePrecision, error_2;
             return __generator(this, function (_b) {
                 switch (_b.label) {
@@ -99,7 +99,7 @@ var BinanceBot = /** @class */ (function () {
                         _b.trys.push([0, 3, , 4]);
                         crypto_2 = answers.crypto;
                         symbol = "".concat(crypto_2.toUpperCase(), "USDT");
-                        return [4 /*yield*/, this.getQuantity(symbol)];
+                        return [4 /*yield*/, this.getQuantity(symbol, debugMode)];
                     case 1:
                         _a = _b.sent(), quantity = _a.quantity, markPrice = _a.markPrice, pricePrecision = _a.pricePrecision;
                         return [4 /*yield*/, this.openShortPosition(symbol, markPrice, quantity, pricePrecision)];
@@ -137,15 +137,14 @@ var BinanceBot = /** @class */ (function () {
                 }
             });
         }); };
-        this.getQuantity = function (symbol) { return __awaiter(_this, void 0, void 0, function () {
+        this.getQuantity = function (symbol, debugMode) { return __awaiter(_this, void 0, void 0, function () {
             var amount, symbolsData, neededSymbolData, leverage, quantityPrecision, pricePrecision, maxNotionalValue, markPrice, maxAmount, desiredNotional, quantity;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.time('quantity');
                         console.time('file');
-                        amount = 100;
-                        return [4 /*yield*/, this.getExchangeInfo()];
+                        return [4 /*yield*/, (0, exports.getExchangeInfo)()];
                     case 1:
                         symbolsData = _a.sent();
                         console.timeEnd('file');
@@ -156,7 +155,10 @@ var BinanceBot = /** @class */ (function () {
                     case 2:
                         markPrice = (_a.sent()).markPrice;
                         maxAmount = maxNotionalValue / leverage;
-                        if (this.defaultAmount < 100) {
+                        if (debugMode) {
+                            amount = 1;
+                        }
+                        else if (this.defaultAmount < 100) {
                             amount = this.defaultAmount;
                         }
                         else if (maxAmount >= this.maxAmount) {
@@ -234,31 +236,6 @@ var BinanceBot = /** @class */ (function () {
                 }
             });
         }); };
-        this.getExchangeInfo = function () { return __awaiter(_this, void 0, void 0, function () {
-            var data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, fs.readFile("exchange-symbols.json", 'utf-8')];
-                    case 1:
-                        data = _a.sent();
-                        return [2 /*return*/, JSON.parse(data)];
-                }
-            });
-        }); };
-        this.getSymbolsData = function () { return __awaiter(_this, void 0, void 0, function () {
-            var data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, fs.readFile("symbols.json", 'utf-8')];
-                    case 1:
-                        data = _a.sent();
-                        return [2 /*return*/, JSON.parse(data)];
-                }
-            });
-        }); };
-        this.priceStream = function () {
-            // connectWebSocketFuturesPrices()
-        };
         var apiKey = config.apiKey, apiSecret = config.apiSecret, defaultAmount = config.defaultAmount, maxAmount = config.maxAmount, tradingViewLink = config.tradingViewLink, maxLeverage = config.maxLeverage;
         if (!apiKey || !apiSecret) {
             throw 'Provide binance credentials';
@@ -334,6 +311,30 @@ var getBinanceConfig = function () { return __awaiter(void 0, void 0, void 0, fu
     });
 }); };
 exports.getBinanceConfig = getBinanceConfig;
+var getExchangeInfo = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var data;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, fs.readFile("exchange-symbols.json", 'utf-8')];
+            case 1:
+                data = _a.sent();
+                return [2 /*return*/, JSON.parse(data)];
+        }
+    });
+}); };
+exports.getExchangeInfo = getExchangeInfo;
+var getSymbolsData = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var data;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, fs.readFile("symbols.json", 'utf-8')];
+            case 1:
+                data = _a.sent();
+                return [2 /*return*/, JSON.parse(data)];
+        }
+    });
+}); };
+exports.getSymbolsData = getSymbolsData;
 // const [exchangeInfo, leverageResponse, { markPrice }] = await Promise.all([
 //     binance.futuresExchangeInfo(),
 //     binance.futuresLeverage(symbol, leverage),

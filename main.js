@@ -88,7 +88,7 @@ commander
             case 3:
                 config = _a.sent();
                 bot = new bot_1.BinanceBot(config);
-                return [4 /*yield*/, bot.createOrderLong(answers)];
+                return [4 /*yield*/, bot.createOrderLong(answers, false)];
             case 4:
                 _a.sent();
                 console.timeEnd('createOrderLong');
@@ -118,7 +118,7 @@ commander
             case 3:
                 config = _a.sent();
                 bot = new bot_1.BinanceBot(config);
-                return [4 /*yield*/, bot.createOrderShort(answers)];
+                return [4 /*yield*/, bot.createOrderShort(answers, false)];
             case 4:
                 _a.sent();
                 console.timeEnd('createOrderShort');
@@ -152,7 +152,7 @@ commander
     .command('stream')
     .description('Stream all futures')
     .action(function () { return __awaiter(void 0, void 0, void 0, function () {
-    var config, bot;
+    var config;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -160,10 +160,7 @@ commander
                 return [4 /*yield*/, (0, bot_1.getBinanceConfig)()];
             case 1:
                 config = _a.sent();
-                bot = new bot_1.BinanceBot(config);
-                return [4 /*yield*/, bot.priceStream()];
-            case 2:
-                _a.sent();
+                new bot_1.BinanceBot(config);
                 process.exit();
                 return [2 /*return*/];
         }

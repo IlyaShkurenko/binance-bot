@@ -17,6 +17,11 @@ export const questions: Array<Object> = [
 ]
 
 export const keysQuestions: Array<Object> = [
+    // {
+    //     type: 'input',
+    //     name: 'isTest',
+    //     message: 'Test mode?'
+    // },
     {
         type: 'input',
         name: 'apiKey',

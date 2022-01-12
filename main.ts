@@ -32,7 +32,7 @@ commander
             console.time('createOrderLong');
             const config = await getBinanceConfig();
             const bot = new BinanceBot(config);
-            await bot.createOrderLong(answers)
+            await bot.createOrderLong(answers, false)
             console.timeEnd('createOrderLong');
         }
     })
@@ -48,7 +48,7 @@ commander
             console.time('createOrderShort');
             const config = await getBinanceConfig();
             const bot = new BinanceBot(config);
-            await bot.createOrderShort(answers)
+            await bot.createOrderShort(answers, false)
             console.timeEnd('createOrderShort');
         }
     })
@@ -70,8 +70,7 @@ commander
     .action(async () => {
         console.log(chalk.yellow('=========*** Binance System ***=========='))
         const config = await getBinanceConfig();
-        const bot = new BinanceBot(config);
-        await bot.priceStream();
+        new BinanceBot(config);
         process.exit()
     })
 
