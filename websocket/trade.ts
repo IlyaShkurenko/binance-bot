@@ -19,7 +19,7 @@ client.on('connect', function(connection:any) {
         if (message.type === 'utf8') {
             const data = JSON.parse(message.utf8Data)
             //console.log(data.p + ' ' + new Date(data.E) + ' ' + data.E)
-            compareCurrentPriceWithPrevious(data, 0.3)
+            compareCurrentPriceWithPrevious(data, 0.1)
         }
     });
 });
@@ -39,14 +39,9 @@ const compareCurrentPriceWithPrevious = (currentData: { s: string, p: string, E:
         second: (new Date(currentData.E)).getSeconds()
     }
     currentTicker.push(symbolObj);
-    console.log(currentTicker)
     const firstPriceObj = currentTicker[0];
     if(symbolObj.second - firstPriceObj.second > 1) {
-        console.log('before filter')
-        console.log(currentTicker)
         currentTicker = currentTicker.filter((i:any) => i.second !== firstPriceObj.second);
-        console.log('after filter')
-        console.log(currentTicker)
         symbolLastPrices[currentData.s] = currentTicker;
     }
     //check last one, minimal by current second, close last second
@@ -63,6 +58,7 @@ const compareCurrentPriceWithPrevious = (currentData: { s: string, p: string, E:
                 type = 'short';
             }
             //console.log(difference)
+            //console.log(difference)
             if(difference > percent && findType === type) {
                 const date = new Date()
                 console.log(`${functionType}, ${ticker}: ${difference}, prev price: ${prevPrice}, current price: ${currentPrice}, date: ${date.getSeconds()}, ${date.getMilliseconds()}`)
@@ -75,7 +71,9 @@ const compareCurrentPriceWithPrevious = (currentData: { s: string, p: string, E:
         }
         const checkDiffCurrAndPrevSecond = () => {
             const prevSecondPrice = [...currentTicker.filter((i:any) => i.second !== currentValue.second)].pop() //without current element;
-            calculatePercent(prevSecondPrice.price, currentValue.price, 'checkDiffCurrAndPrevSecond')
+            if(prevSecondPrice) {
+                calculatePercent(prevSecondPrice.price, currentValue.price, 'checkDiffCurrAndPrevSecond')
+            }
         }
         const checkDiffCurrAndCurrMinSec = () => {
             const currentSecondPrices = [...currentTicker.filter((i:any) => i.second === currentValue.second)] //without current element;
@@ -91,6 +89,5 @@ const compareCurrentPriceWithPrevious = (currentData: { s: string, p: string, E:
         checkDiffCurrAndPrev();
         checkDiffCurrAndCurrMinSec();
         checkDiffCurrAndPrevSecond();
-
     }
 }

@@ -11,7 +11,7 @@
     "quantityPrecision": 3,
     "pricePrecision": 2,
     "maxNotionalValue": 1500000,
-    "leverage": 15
+    "leverage": 12
   },
   {
     "symbol": "BCHUSDT",
@@ -938,20 +938,6 @@
     "leverage": 50
   },
   {
-    "symbol": "BTCUSDT_211231",
-    "quantityPrecision": 3,
-    "pricePrecision": 1,
-    "maxNotionalValue": 375000,
-    "leverage": 20
-  },
-  {
-    "symbol": "ETHUSDT_211231",
-    "quantityPrecision": 3,
-    "pricePrecision": 2,
-    "maxNotionalValue": 375000,
-    "leverage": 25
-  },
-  {
     "symbol": "CELOUSDT",
     "quantityPrecision": 1,
     "pricePrecision": 3,
@@ -1023,6 +1009,27 @@
   },
   {
     "symbol": "PEOPLEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ANTUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  },
+  {
+    "symbol": "ROSEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 20
+  },
+  {
+    "symbol": "DUSKUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 5,
     "maxNotionalValue": 25000,
