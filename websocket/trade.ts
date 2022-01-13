@@ -42,7 +42,7 @@ getBinanceConfig().then(async data => {
                     if (message.type === 'utf8') {
                         const data = JSON.parse(message.utf8Data)
                         //console.log(data.p + ' ' + new Date(data.E) + ' ' + data.E)
-                        compareCurrentPriceWithPrevious(data, 0.2)
+                        compareCurrentPriceWithPrevious(data, 0.3)
                     }
                 });
             });
