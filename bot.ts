@@ -47,9 +47,9 @@ export class BinanceBot {
 
     openLongPosition = async (symbol: string, markPrice: any, quantity: number, pricePrecision: number) => {
         console.time('order')
-        console.log(symbol + ' ' + quantity)
         const order = await this.binance.futuresMarketBuy(symbol, quantity);
         console.timeEnd('order')
+        console.log(symbol + ' ' + quantity + ' ' + markPrice)
         if(order.msg) throw new Error(order.msg)
         // console.time('limitsell');
         const takeProfitPrice = (parseFloat(markPrice) + markPrice * 0.012).toFixed(pricePrecision);
@@ -77,6 +77,7 @@ export class BinanceBot {
         console.time('order')
         const order = await this.binance.futuresMarketSell(symbol, quantity);
         console.timeEnd('order')
+        console.log(symbol + ' ' + quantity + ' ' + markPrice)
         if(order.msg) throw new Error(order.msg)
         const takeProfitPrice = (parseFloat(markPrice) - markPrice * 0.012).toFixed(pricePrecision);
         const take = await this.binance.futuresBuy(symbol, quantity, takeProfitPrice, { type: 'TAKE_PROFIT', stopPrice: takeProfitPrice });
@@ -118,9 +119,8 @@ export class BinanceBot {
             desiredNotional = maxNotionalValue;
         }
         const quantity = ((desiredNotional * 0.98) / markPrice).toFixed(quantityPrecision);
-        console.log(quantity + ' ' + markPrice)
         console.timeEnd('quantity');
-        return { quantity: parseInt(quantity), markPrice, pricePrecision }
+        return { quantity: parseFloat(quantity), markPrice, pricePrecision }
     }
 
     syncPositions = async () => {
