@@ -98,13 +98,15 @@ export class BinanceBot {
             { leverage: number, quantityPrecision: number, pricePrecision: number, maxNotionalValue: number } = neededSymbolData;
         console.time('price')
         const { markPrice } = await this.binance.futuresMarkPrice(symbol);
-        const maxAmount = maxNotionalValue / leverage;
+        const maxAmount = maxNotionalValue / leverage; // 100
         if(debugMode) {
             amount = 1
         } else if(this.defaultAmount < 100) {
             amount = this.defaultAmount;
         } else if(maxAmount >= this.maxAmount) {
             amount = this.maxAmount
+        } else if(this.defaultAmount > maxAmount) {
+            amount = maxAmount
         } else if(this.maxAmount > maxAmount && this.defaultAmount < maxAmount) {
             amount = maxAmount
         } else {
@@ -115,7 +117,8 @@ export class BinanceBot {
         if(desiredNotional > maxNotionalValue) {
             desiredNotional = maxNotionalValue;
         }
-        const quantity = ((desiredNotional * 0.99) / markPrice).toFixed(quantityPrecision);
+        const quantity = ((desiredNotional * 0.98) / markPrice).toFixed(quantityPrecision);
+        console.log(quantity + ' ' + markPrice)
         console.timeEnd('quantity');
         return { quantity: parseInt(quantity), markPrice, pricePrecision }
     }

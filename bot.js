@@ -164,6 +164,9 @@ var BinanceBot = /** @class */ (function () {
                         else if (maxAmount >= this.maxAmount) {
                             amount = this.maxAmount;
                         }
+                        else if (this.defaultAmount > maxAmount) {
+                            amount = maxAmount;
+                        }
                         else if (this.maxAmount > maxAmount && this.defaultAmount < maxAmount) {
                             amount = maxAmount;
                         }
@@ -175,7 +178,8 @@ var BinanceBot = /** @class */ (function () {
                         if (desiredNotional > maxNotionalValue) {
                             desiredNotional = maxNotionalValue;
                         }
-                        quantity = ((desiredNotional * 0.99) / markPrice).toFixed(quantityPrecision);
+                        quantity = ((desiredNotional * 0.98) / markPrice).toFixed(quantityPrecision);
+                        console.log(quantity + ' ' + markPrice);
                         console.timeEnd('quantity');
                         return [2 /*return*/, { quantity: parseInt(quantity), markPrice: markPrice, pricePrecision: pricePrecision }];
                 }
