@@ -88,6 +88,7 @@ const compareCurrentPriceWithPrevious = async (currentData: { s: string, p: stri
             //console.log(difference)
             if(difference > percent && (positionType ? positionType === type : true)) {
                 const answers = { crypto: ticker.replace('USDT', '') }
+                const date = new Date()
                 if(openPositions.length < 1) {
                     if(type === 'short') {
                         bot.createOrderShort(answers, true)
@@ -95,15 +96,15 @@ const compareCurrentPriceWithPrevious = async (currentData: { s: string, p: stri
                         bot.createOrderLong(answers, true)
                     }
                     openPositions.push(ticker);
-                    const date = new Date()
-                    console.log(`${functionType}, ${ticker}: ${newPercent} = ${difference}, prev price: ${prevPrice}, current price: ${currentPrice}, date: ${date.getSeconds()}, ${date.getMilliseconds()}`);
-                    fs.writeFile("trade.json", JSON.stringify(currentTicker, null, 2), function(err: any) {
-                        if(err) {
-                            return console.log(err);
-                        }
-                        console.log("The file was saved!");
-                    });
+                    symbolLastPrices[ticker] = [] //clear array after find
                 }
+                console.log(`${functionType}, ${ticker}: ${newPercent} = ${difference}, prev price: ${prevPrice}, current price: ${currentPrice}, date: ${date.getSeconds()}, ${date.getMilliseconds()}`);
+                fs.writeFile(`${ticker}.json`, JSON.stringify(currentTicker, null, 2), function(err: any) {
+                    if(err) {
+                        return console.log(err);
+                    }
+                    console.log("The file was saved!");
+                });
             }
         }
         const currentValue = currentTicker[currentTicker.length - 1];
