@@ -32,7 +32,7 @@ export class BinanceBot {
             APISECRET: apiSecret
         });
     }
-    createOrderLong = async (answers: any, debugMode: Boolean) => {
+    createOrderLong = async (answers: any, debugMode: boolean) => {
         try {
             let { crypto }: { crypto: string } = answers;
             const symbol = `${crypto.toUpperCase()}USDT`;
@@ -60,7 +60,7 @@ export class BinanceBot {
         // if(stop.msg) throw new Error(stop.msg)
     }
 
-    createOrderShort = async (answers: any, debugMode: Boolean) => {
+    createOrderShort = async (answers: any, debugMode: boolean) => {
         try {
             let { crypto }: { crypto: string } = answers;
             const symbol = `${crypto.toUpperCase()}USDT`;
@@ -87,7 +87,7 @@ export class BinanceBot {
         // if(stop.msg) throw new Error(stop.msg)
     }
 
-    getQuantity = async (symbol: string, debugMode: Boolean) => {
+    getQuantity = async (symbol: string, debugMode: boolean) => {
         console.time('quantity')
         console.time('file');
         let amount
