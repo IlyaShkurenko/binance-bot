@@ -42,7 +42,7 @@ getBinanceConfig().then(async data => {
                     if (message.type === 'utf8') {
                         const data = JSON.parse(message.utf8Data)
                         //console.log(data.p + ' ' + new Date(data.E) + ' ' + data.E)
-                        compareCurrentPriceWithPrevious(data, 0.35)
+                        compareCurrentPriceWithPrevious(data, 0.2)
                     }
                 });
             });
@@ -87,7 +87,7 @@ const compareCurrentPriceWithPrevious = async (currentData: { s: string, p: stri
             //console.log(difference)
             //console.log(difference)
             if(difference > percent && (positionType ? positionType === type : true)) {
-                const answers = { crypto: ticker.replace('USDT', '') }
+                const answers = { crypto: ticker.replace('USDT', ''), price: currentPrice }
                 if(openPositions.length < 1) {
                     if(type === 'short') {
                         bot.createOrderShort(answers, true)

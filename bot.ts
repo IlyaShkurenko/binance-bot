@@ -34,9 +34,9 @@ export class BinanceBot {
     }
     createOrderLong = async (answers: any, debugMode: boolean) => {
         try {
-            let { crypto }: { crypto: string } = answers;
+            let { crypto, price }: { crypto: string,  price: number | undefined } = answers;
             const symbol = `${crypto.toUpperCase()}USDT`;
-            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol, debugMode);
+            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol, price, debugMode);
             await this.openLongPosition(symbol, markPrice, quantity, pricePrecision);
             open(`${this.tradingViewLink}?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
             return
@@ -62,9 +62,9 @@ export class BinanceBot {
 
     createOrderShort = async (answers: any, debugMode: boolean) => {
         try {
-            let { crypto }: { crypto: string } = answers;
+            let { crypto, price }: { crypto: string,  price: number | undefined } = answers;
             const symbol = `${crypto.toUpperCase()}USDT`;
-            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol, debugMode);
+            const { quantity, markPrice, pricePrecision } = await this.getQuantity(symbol, price, debugMode);
             await this.openShortPosition(symbol, markPrice, quantity, pricePrecision);
             open(`${this.tradingViewLink}?symbol=BINANCE%3A${symbol}PERP`, { app: { name: 'google chrome' } });
             return
@@ -88,7 +88,7 @@ export class BinanceBot {
         // if(stop.msg) throw new Error(stop.msg)
     }
 
-    getQuantity = async (symbol: string, debugMode: boolean) => {
+    getQuantity = async (symbol: string, price?: number, debugMode?: boolean) => {
         console.time('quantity')
         console.time('file');
         let amount
@@ -98,7 +98,13 @@ export class BinanceBot {
         const { leverage, quantityPrecision, pricePrecision, maxNotionalValue }:
             { leverage: number, quantityPrecision: number, pricePrecision: number, maxNotionalValue: number } = neededSymbolData;
         console.time('price')
-        const { markPrice } = await this.binance.futuresMarkPrice(symbol);
+        let markPrice;
+        if(price) {
+            markPrice = price
+        } else {
+            const priceData = await this.binance.futuresMarkPrice(symbol);
+            markPrice = priceData.markPrice;
+        }
         const maxAmount = maxNotionalValue / leverage; // 100
         if(debugMode) {
             amount = 1

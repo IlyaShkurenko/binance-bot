@@ -45,14 +45,14 @@ var BinanceBot = /** @class */ (function () {
     function BinanceBot(config) {
         var _this = this;
         this.createOrderLong = function (answers, debugMode) { return __awaiter(_this, void 0, void 0, function () {
-            var crypto_1, symbol, _a, quantity, markPrice, pricePrecision, error_1;
+            var crypto_1, price, symbol, _a, quantity, markPrice, pricePrecision, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
-                        crypto_1 = answers.crypto;
+                        crypto_1 = answers.crypto, price = answers.price;
                         symbol = "".concat(crypto_1.toUpperCase(), "USDT");
-                        return [4 /*yield*/, this.getQuantity(symbol, debugMode)];
+                        return [4 /*yield*/, this.getQuantity(symbol, price, debugMode)];
                     case 1:
                         _a = _b.sent(), quantity = _a.quantity, markPrice = _a.markPrice, pricePrecision = _a.pricePrecision;
                         return [4 /*yield*/, this.openLongPosition(symbol, markPrice, quantity, pricePrecision)];
@@ -92,14 +92,14 @@ var BinanceBot = /** @class */ (function () {
             });
         }); };
         this.createOrderShort = function (answers, debugMode) { return __awaiter(_this, void 0, void 0, function () {
-            var crypto_2, symbol, _a, quantity, markPrice, pricePrecision, error_2;
+            var crypto_2, price, symbol, _a, quantity, markPrice, pricePrecision, error_2;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 3, , 4]);
-                        crypto_2 = answers.crypto;
+                        crypto_2 = answers.crypto, price = answers.price;
                         symbol = "".concat(crypto_2.toUpperCase(), "USDT");
-                        return [4 /*yield*/, this.getQuantity(symbol, debugMode)];
+                        return [4 /*yield*/, this.getQuantity(symbol, price, debugMode)];
                     case 1:
                         _a = _b.sent(), quantity = _a.quantity, markPrice = _a.markPrice, pricePrecision = _a.pricePrecision;
                         return [4 /*yield*/, this.openShortPosition(symbol, markPrice, quantity, pricePrecision)];
@@ -138,8 +138,8 @@ var BinanceBot = /** @class */ (function () {
                 }
             });
         }); };
-        this.getQuantity = function (symbol, debugMode) { return __awaiter(_this, void 0, void 0, function () {
-            var amount, symbolsData, neededSymbolData, leverage, quantityPrecision, pricePrecision, maxNotionalValue, markPrice, maxAmount, desiredNotional, quantity;
+        this.getQuantity = function (symbol, price, debugMode) { return __awaiter(_this, void 0, void 0, function () {
+            var amount, symbolsData, neededSymbolData, leverage, quantityPrecision, pricePrecision, maxNotionalValue, markPrice, priceData, maxAmount, desiredNotional, quantity;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -152,9 +152,15 @@ var BinanceBot = /** @class */ (function () {
                         neededSymbolData = symbolsData.find(function (i) { return i.symbol === symbol; });
                         leverage = neededSymbolData.leverage, quantityPrecision = neededSymbolData.quantityPrecision, pricePrecision = neededSymbolData.pricePrecision, maxNotionalValue = neededSymbolData.maxNotionalValue;
                         console.time('price');
-                        return [4 /*yield*/, this.binance.futuresMarkPrice(symbol)];
-                    case 2:
-                        markPrice = (_a.sent()).markPrice;
+                        if (!price) return [3 /*break*/, 2];
+                        markPrice = price;
+                        return [3 /*break*/, 4];
+                    case 2: return [4 /*yield*/, this.binance.futuresMarkPrice(symbol)];
+                    case 3:
+                        priceData = _a.sent();
+                        markPrice = priceData.markPrice;
+                        _a.label = 4;
+                    case 4:
                         maxAmount = maxNotionalValue / leverage;
                         if (debugMode) {
                             amount = 1;
