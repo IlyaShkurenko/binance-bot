@@ -74,11 +74,11 @@ var BinanceBot = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         console.time('order');
-                        console.log(symbol + ' ' + quantity);
                         return [4 /*yield*/, this.binance.futuresMarketBuy(symbol, quantity)];
                     case 1:
                         order = _a.sent();
                         console.timeEnd('order');
+                        console.log(symbol + ' ' + quantity + ' ' + markPrice);
                         if (order.msg)
                             throw new Error(order.msg);
                         takeProfitPrice = (parseFloat(markPrice) + markPrice * 0.012).toFixed(pricePrecision);
@@ -125,6 +125,7 @@ var BinanceBot = /** @class */ (function () {
                     case 1:
                         order = _a.sent();
                         console.timeEnd('order');
+                        console.log(symbol + ' ' + quantity + ' ' + markPrice);
                         if (order.msg)
                             throw new Error(order.msg);
                         takeProfitPrice = (parseFloat(markPrice) - markPrice * 0.012).toFixed(pricePrecision);
@@ -179,9 +180,8 @@ var BinanceBot = /** @class */ (function () {
                             desiredNotional = maxNotionalValue;
                         }
                         quantity = ((desiredNotional * 0.98) / markPrice).toFixed(quantityPrecision);
-                        console.log(quantity + ' ' + markPrice);
                         console.timeEnd('quantity');
-                        return [2 /*return*/, { quantity: parseInt(quantity), markPrice: markPrice, pricePrecision: pricePrecision }];
+                        return [2 /*return*/, { quantity: parseFloat(quantity), markPrice: markPrice, pricePrecision: pricePrecision }];
                 }
             });
         }); };
