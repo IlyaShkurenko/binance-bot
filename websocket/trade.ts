@@ -59,6 +59,7 @@ const compareCurrentPriceWithPrevious = async (currentData: { s: string, p: stri
         symbol: currentData.s,
         price: parseFloat(currentData.p),
         second: (new Date(currentData.E)).getSeconds(),
+        millisecond: (new Date(currentData.E)).getMilliseconds(),
         minute: (new Date(currentData.E)).getMinutes()
     }
     currentTicker.push(symbolObj);
