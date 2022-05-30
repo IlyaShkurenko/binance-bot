@@ -4,10 +4,11 @@ const cron = require('node-cron');
 let bot: any;
 let currentSymbol = 'LUNAUSDT';
 let requestsCount = 0;
+let tryCreateOrdersCount = 0;
 getBinanceConfig().then(async data => {
     bot = new BinanceBot(data);
     console.log(Date.now());
-    cron.schedule("* 06 * * *", async () => { // 0 * * * * = every houre at minute 0
+    cron.schedule("55 05 * * *", async () => { // 0 * * * * = every houre at minute 0
         await placeOrder(currentSymbol)
     });
 })
@@ -26,6 +27,7 @@ export const placeOrder = async (symbol: string, botInstance?: any) => {
             const quantity = (amountUSD / askPrice).toFixed(2);
             console.log(`amount - ${amountUSD}, quantity - ${quantity}`);
             if(!isNaN(parseFloat(quantity)) && parseFloat(quantity) !== Infinity) {
+                tryCreateOrdersCount++;
                 const response = await bot.binance.marketBuy(symbol, quantity);
                 requestsCount++;
                 console.log(response)
@@ -40,7 +42,7 @@ export const placeOrder = async (symbol: string, botInstance?: any) => {
                 placeOrder(currentSymbol)
             }
         }
-    } while (price === 0)
+    } while (price === 0 && tryCreateOrdersCount < 10)
 }
 // cron.schedule("0 * * * *", () => { // 0 * * * * = every houre at minute 0
 //     console.log("running a task every houre");

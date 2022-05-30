@@ -42,6 +42,7 @@ var cron = require('node-cron');
 var bot;
 var currentSymbol = 'LUNAUSDT';
 var requestsCount = 0;
+var tryCreateOrdersCount = 0;
 (0, bot_1.getBinanceConfig)().then(function (data) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         bot = new bot_1.BinanceBot(data);
@@ -80,6 +81,7 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 quantity = (amountUSD / askPrice).toFixed(2);
                 console.log("amount - ".concat(amountUSD, ", quantity - ").concat(quantity));
                 if (!(!isNaN(parseFloat(quantity)) && parseFloat(quantity) !== Infinity)) return [3 /*break*/, 4];
+                tryCreateOrdersCount++;
                 return [4 /*yield*/, bot.binance.marketBuy(symbol, quantity)];
             case 3:
                 response = _a.sent();
@@ -100,7 +102,7 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 }
                 return [3 /*break*/, 6];
             case 6:
-                if (price === 0) return [3 /*break*/, 1];
+                if (price === 0 && tryCreateOrdersCount < 10) return [3 /*break*/, 1];
                 _a.label = 7;
             case 7: return [2 /*return*/];
         }
