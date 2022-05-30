@@ -41,6 +41,7 @@ var bot_1 = require("../bot");
 var cron = require('node-cron');
 var bot;
 var currentSymbol = 'LUNAUSDT';
+var requestsCount = 0;
 (0, bot_1.getBinanceConfig)().then(function (data) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         bot = new bot_1.BinanceBot(data);
@@ -74,6 +75,7 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 return [4 /*yield*/, bot.binance.bookTickers(symbol)];
             case 2:
                 askPrice = (_a.sent()).askPrice;
+                requestsCount++;
                 price = parseFloat(askPrice);
                 quantity = (amountUSD / askPrice).toFixed(2);
                 console.log("amount - ".concat(amountUSD, ", quantity - ").concat(quantity));
@@ -81,9 +83,12 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 return [4 /*yield*/, bot.binance.marketBuy(symbol, quantity)];
             case 3:
                 response = _a.sent();
+                requestsCount++;
                 console.log(response);
                 _a.label = 4;
-            case 4: return [3 /*break*/, 6];
+            case 4:
+                console.log(requestsCount);
+                return [3 /*break*/, 6];
             case 5:
                 e_1 = _a.sent();
                 error = JSON.parse(e_1.body || 'null');
