@@ -15,7 +15,7 @@ getBinanceConfig().then(async data => {
 
 export const placeOrder = async (symbol: string, botInstance?: any) => {
     let price;
-    const amountUSD = symbol === 'LUNAUSDT' ? 1500 : 600;
+    let amountUSD = symbol === 'LUNAUSDT' ? 1500 : 600;
     if(!bot && botInstance) {
         bot = botInstance;
     }
@@ -24,6 +24,19 @@ export const placeOrder = async (symbol: string, botInstance?: any) => {
             const { askPrice } = await bot.binance.bookTickers(symbol);
             requestsCount++;
             price = parseFloat(askPrice);
+            if(price > 0 && price <= 1) {
+                amountUSD = 2000
+            } else if(price > 1 && price <= 3.5) {
+                amountUSD = 1500
+            } else if(price > 3.5 && price <= 6.5) {
+                amountUSD = 1100
+            } else if(price > 6.5 && price <= 10) {
+                amountUSD = 800
+            } else if(price > 10 && price <= 12) {
+                amountUSD = 500;
+            } else if(price > 12) {
+                amountUSD = 100;
+            }
             const quantity = (amountUSD / askPrice).toFixed(2);
             console.log(`amount - ${amountUSD}, quantity - ${quantity}`);
             if(!isNaN(parseFloat(quantity)) && parseFloat(quantity) !== Infinity) {
@@ -37,10 +50,10 @@ export const placeOrder = async (symbol: string, botInstance?: any) => {
             const error = JSON.parse(e.body || 'null');
             console.log(symbol);
             console.log(error);
-            if(error && error.msg.includes(`Invalid symbol`)) {
-                currentSymbol = currentSymbol !== 'LUNAUSDT' ? 'LUNAUSDT' : 'LUNABUSD'
-                placeOrder(currentSymbol)
-            }
+            // if(error && error.msg.includes(`Invalid symbol`)) {
+            //     currentSymbol = currentSymbol !== 'LUNAUSDT' ? 'LUNAUSDT' : 'LUNABUSD'
+            //     placeOrder(currentSymbol)
+            // }
         }
     } while (price === 0 && tryCreateOrdersCount < 10)
 }

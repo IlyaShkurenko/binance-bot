@@ -47,7 +47,7 @@ var tryCreateOrdersCount = 0;
     return __generator(this, function (_a) {
         bot = new bot_1.BinanceBot(data);
         console.log(Date.now());
-        cron.schedule("* 06 * * *", function () { return __awaiter(void 0, void 0, void 0, function () {
+        cron.schedule("55 05 * * *", function () { return __awaiter(void 0, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: // 0 * * * * = every houre at minute 0
@@ -78,6 +78,24 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 askPrice = (_a.sent()).askPrice;
                 requestsCount++;
                 price = parseFloat(askPrice);
+                if (price > 0 && price <= 1) {
+                    amountUSD = 2000;
+                }
+                else if (price > 1 && price <= 3.5) {
+                    amountUSD = 1500;
+                }
+                else if (price > 3.5 && price <= 6.5) {
+                    amountUSD = 1100;
+                }
+                else if (price > 6.5 && price <= 10) {
+                    amountUSD = 800;
+                }
+                else if (price > 10 && price <= 12) {
+                    amountUSD = 500;
+                }
+                else if (price > 12) {
+                    amountUSD = 100;
+                }
                 quantity = (amountUSD / askPrice).toFixed(2);
                 console.log("amount - ".concat(amountUSD, ", quantity - ").concat(quantity));
                 if (!(!isNaN(parseFloat(quantity)) && parseFloat(quantity) !== Infinity)) return [3 /*break*/, 4];
@@ -96,10 +114,6 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 error = JSON.parse(e_1.body || 'null');
                 console.log(symbol);
                 console.log(error);
-                if (error && error.msg.includes("Invalid symbol")) {
-                    currentSymbol = currentSymbol !== 'LUNAUSDT' ? 'LUNAUSDT' : 'LUNABUSD';
-                    (0, exports.placeOrder)(currentSymbol);
-                }
                 return [3 /*break*/, 6];
             case 6:
                 if (price === 0 && tryCreateOrdersCount < 10) return [3 /*break*/, 1];
