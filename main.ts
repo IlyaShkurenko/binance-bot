@@ -82,7 +82,7 @@ commander
         console.log(chalk.yellow('=========*** Binance System ***=========='))
         const config = await getBinanceConfig();
         const bot = new BinanceBot(config);
-        await placeOrder('LUNAUSDT', 10, bot)
+        await placeOrder('LUNAUSDT',  bot)
         process.exit()
     })
 

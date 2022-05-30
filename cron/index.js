@@ -45,11 +45,11 @@ var currentSymbol = 'LUNAUSDT';
     return __generator(this, function (_a) {
         bot = new bot_1.BinanceBot(data);
         console.log(Date.now());
-        cron.schedule("25 22 30 5 *", function () { return __awaiter(void 0, void 0, void 0, function () {
+        cron.schedule("* 06 * * *", function () { return __awaiter(void 0, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: // 0 * * * * = every houre at minute 0
-                    return [4 /*yield*/, (0, exports.placeOrder)(currentSymbol, 10)];
+                    return [4 /*yield*/, (0, exports.placeOrder)(currentSymbol)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -59,42 +59,45 @@ var currentSymbol = 'LUNAUSDT';
         return [2 /*return*/];
     });
 }); });
-var placeOrder = function (symbol, amountUSD, botInstance) { return __awaiter(void 0, void 0, void 0, function () {
-    var price, askPrice, quantity, response, e_1, error;
+var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 0, void 0, function () {
+    var price, amountUSD, askPrice, quantity, response, e_1, error;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                amountUSD = symbol === 'LUNAUSDT' ? 1500 : 600;
                 if (!bot && botInstance) {
                     bot = botInstance;
                 }
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 4, , 5]);
+                _a.trys.push([1, 5, , 6]);
                 return [4 /*yield*/, bot.binance.bookTickers(symbol)];
             case 2:
                 askPrice = (_a.sent()).askPrice;
                 price = parseFloat(askPrice);
                 quantity = (amountUSD / askPrice).toFixed(2);
-                console.log('quantity - ' + quantity);
+                console.log("amount - ".concat(amountUSD, ", quantity - ").concat(quantity));
+                if (!(!isNaN(parseFloat(quantity)) && parseFloat(quantity) !== Infinity)) return [3 /*break*/, 4];
                 return [4 /*yield*/, bot.binance.marketBuy(symbol, quantity)];
             case 3:
                 response = _a.sent();
                 console.log(response);
-                return [3 /*break*/, 5];
-            case 4:
+                _a.label = 4;
+            case 4: return [3 /*break*/, 6];
+            case 5:
                 e_1 = _a.sent();
                 error = JSON.parse(e_1.body || 'null');
                 console.log(symbol);
                 console.log(error);
                 if (error && error.msg.includes("Invalid symbol")) {
                     currentSymbol = currentSymbol !== 'LUNAUSDT' ? 'LUNAUSDT' : 'LUNABUSD';
-                    (0, exports.placeOrder)(currentSymbol, 15);
+                    (0, exports.placeOrder)(currentSymbol);
                 }
-                return [3 /*break*/, 5];
-            case 5:
+                return [3 /*break*/, 6];
+            case 6:
                 if (price === 0) return [3 /*break*/, 1];
-                _a.label = 6;
-            case 6: return [2 /*return*/];
+                _a.label = 7;
+            case 7: return [2 /*return*/];
         }
     });
 }); };

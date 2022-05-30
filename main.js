@@ -180,7 +180,7 @@ commander
             case 1:
                 config = _a.sent();
                 bot = new bot_1.BinanceBot(config);
-                return [4 /*yield*/, (0, cron_1.placeOrder)('LUNAUSDT', 10, bot)];
+                return [4 /*yield*/, (0, cron_1.placeOrder)('LUNAUSDT', bot)];
             case 2:
                 _a.sent();
                 process.exit();
