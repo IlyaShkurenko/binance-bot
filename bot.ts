@@ -6,7 +6,7 @@ const open = require('open');
 const Binance = require('node-binance-api');
 
 export class BinanceBot {
-    private readonly binance: any;
+    public binance: any;
     private readonly defaultAmount: number;
     private readonly maxAmount: number;
     private readonly tradingViewLink: string;

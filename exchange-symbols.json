@@ -3,15 +3,15 @@
     "symbol": "BTCUSDT",
     "quantityPrecision": 3,
     "pricePrecision": 2,
-    "maxNotionalValue": 7500000,
+    "maxNotionalValue": 10000000,
     "leverage": 10
   },
   {
     "symbol": "ETHUSDT",
     "quantityPrecision": 3,
     "pricePrecision": 2,
-    "maxNotionalValue": 1500000,
-    "leverage": 10
+    "maxNotionalValue": 10000000,
+    "leverage": 5
   },
   {
     "symbol": "BCHUSDT",
@@ -185,7 +185,7 @@
     "symbol": "ZILUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 5,
-    "maxNotionalValue": 5000,
+    "maxNotionalValue": 50000,
     "leverage": 10
   },
   {
@@ -234,7 +234,7 @@
     "symbol": "KAVAUSDT",
     "quantityPrecision": 1,
     "pricePrecision": 4,
-    "maxNotionalValue": 5000,
+    "maxNotionalValue": 100000,
     "leverage": 10
   },
   {
@@ -311,13 +311,6 @@
     "symbol": "TRBUSDT",
     "quantityPrecision": 1,
     "pricePrecision": 3,
-    "maxNotionalValue": 5000,
-    "leverage": 10
-  },
-  {
-    "symbol": "YFIIUSDT",
-    "quantityPrecision": 3,
-    "pricePrecision": 1,
     "maxNotionalValue": 5000,
     "leverage": 10
   },
@@ -560,13 +553,6 @@
     "leverage": 10
   },
   {
-    "symbol": "AKROUSDT",
-    "quantityPrecision": 0,
-    "pricePrecision": 5,
-    "maxNotionalValue": 5000,
-    "leverage": 10
-  },
-  {
     "symbol": "CHZUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 5,
@@ -588,13 +574,6 @@
     "leverage": 10
   },
   {
-    "symbol": "LUNAUSDT",
-    "quantityPrecision": 0,
-    "pricePrecision": 4,
-    "maxNotionalValue": 50000,
-    "leverage": 10
-  },
-  {
     "symbol": "BTSUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 5,
@@ -612,14 +591,7 @@
     "symbol": "UNFIUSDT",
     "quantityPrecision": 1,
     "pricePrecision": 3,
-    "maxNotionalValue": 5000,
-    "leverage": 10
-  },
-  {
-    "symbol": "DODOUSDT",
-    "quantityPrecision": 1,
-    "pricePrecision": 3,
-    "maxNotionalValue": 5000,
+    "maxNotionalValue": 25000,
     "leverage": 10
   },
   {
@@ -749,13 +721,6 @@
     "leverage": 10
   },
   {
-    "symbol": "BTTUSDT",
-    "quantityPrecision": 0,
-    "pricePrecision": 6,
-    "maxNotionalValue": 5000,
-    "leverage": 10
-  },
-  {
     "symbol": "NKNUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 5,
@@ -815,13 +780,6 @@
     "symbol": "BTCDOMUSDT",
     "quantityPrecision": 3,
     "pricePrecision": 1,
-    "maxNotionalValue": 5000,
-    "leverage": 10
-  },
-  {
-    "symbol": "KEEPUSDT",
-    "quantityPrecision": 0,
-    "pricePrecision": 4,
     "maxNotionalValue": 5000,
     "leverage": 10
   },
@@ -966,13 +924,6 @@
     "leverage": 10
   },
   {
-    "symbol": "NUUSDT",
-    "quantityPrecision": 1,
-    "pricePrecision": 4,
-    "maxNotionalValue": 5000,
-    "leverage": 10
-  },
-  {
     "symbol": "CTSIUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 4,
@@ -991,20 +942,6 @@
     "quantityPrecision": 1,
     "pricePrecision": 3,
     "maxNotionalValue": 5000,
-    "leverage": 10
-  },
-  {
-    "symbol": "BTCUSDT_220325",
-    "quantityPrecision": 3,
-    "pricePrecision": 1,
-    "maxNotionalValue": 375000,
-    "leverage": 10
-  },
-  {
-    "symbol": "ETHUSDT_220325",
-    "quantityPrecision": 3,
-    "pricePrecision": 2,
-    "maxNotionalValue": 375000,
     "leverage": 10
   },
   {
@@ -1032,6 +969,167 @@
     "symbol": "DUSKUSDT",
     "quantityPrecision": 0,
     "pricePrecision": 5,
+    "maxNotionalValue": 5000,
+    "leverage": 10
+  },
+  {
+    "symbol": "FLOWUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 3,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "IMXUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "API3USDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "GMTUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 150000,
+    "leverage": 10
+  },
+  {
+    "symbol": "APEUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 4,
+    "maxNotionalValue": 150000,
+    "leverage": 10
+  },
+  {
+    "symbol": "BTCUSDT_220624",
+    "quantityPrecision": 3,
+    "pricePrecision": 1,
+    "maxNotionalValue": 375000,
+    "leverage": 10
+  },
+  {
+    "symbol": "ETHUSDT_220624",
+    "quantityPrecision": 3,
+    "pricePrecision": 2,
+    "maxNotionalValue": 375000,
+    "leverage": 10
+  },
+  {
+    "symbol": "BNXUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 150000,
+    "leverage": 10
+  },
+  {
+    "symbol": "WOOUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "FTTUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "JASMYUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 6,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "DARUSDT",
+    "quantityPrecision": 1,
+    "pricePrecision": 4,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "GALUSDT",
+    "quantityPrecision": 0,
+    "pricePrecision": 5,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "AVAXBUSD",
+    "quantityPrecision": 1,
+    "pricePrecision": 6,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "NEARBUSD",
+    "quantityPrecision": 1,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "GMTBUSD",
+    "quantityPrecision": 1,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "APEBUSD",
+    "quantityPrecision": 1,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "GALBUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "FTMBUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "DODOBUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "ANCBUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "GALABUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 7,
+    "maxNotionalValue": 25000,
+    "leverage": 10
+  },
+  {
+    "symbol": "TRXBUSD",
+    "quantityPrecision": 0,
+    "pricePrecision": 7,
     "maxNotionalValue": 25000,
     "leverage": 10
   }
