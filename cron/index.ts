@@ -5,7 +5,7 @@ let bot: any;
 let currentSymbol = 'LUNAUSDT';
 getBinanceConfig().then(async data => {
     bot = new BinanceBot(data);
-    cron.schedule("03 01 31 5 *", async () => { // 0 * * * * = every houre at minute 0
+    cron.schedule("08 18 30 5 *", async () => { // 0 * * * * = every houre at minute 0
         await placeOrder(currentSymbol, 10)
     });
 })
