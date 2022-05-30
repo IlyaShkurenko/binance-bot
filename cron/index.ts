@@ -6,13 +6,16 @@ let currentSymbol = 'LUNAUSDT';
 getBinanceConfig().then(async data => {
     bot = new BinanceBot(data);
     console.log(Date.now());
-    cron.schedule("13 22 30 5 *", async () => { // 0 * * * * = every houre at minute 0
+    cron.schedule("25 22 30 5 *", async () => { // 0 * * * * = every houre at minute 0
         await placeOrder(currentSymbol, 10)
     });
 })
 
-const placeOrder = async (symbol: string, amountUSD: number) => {
+export const placeOrder = async (symbol: string, amountUSD: number, botInstance?: any) => {
     let price;
+    if(!bot && botInstance) {
+        bot = botInstance;
+    }
     do {
         try {
             const { askPrice } = await bot.binance.bookTickers(symbol);

@@ -6,6 +6,7 @@ import * as commander from 'commander'
 import * as inquirer from 'inquirer'
 import chalk from 'chalk'
 import { BinanceBot, saveBinanceConfig, getBinanceConfig } from './bot';
+import { placeOrder } from './cron'
 import { questions, keysQuestions } from './questions'
 
 commander
@@ -71,6 +72,17 @@ commander
         console.log(chalk.yellow('=========*** Binance System ***=========='))
         const config = await getBinanceConfig();
         new BinanceBot(config);
+        process.exit()
+    })
+
+commander
+    .command('luna')
+    .description('Sync leverage with max notional')
+    .action(async () => {
+        console.log(chalk.yellow('=========*** Binance System ***=========='))
+        const config = await getBinanceConfig();
+        const bot = new BinanceBot(config);
+        await placeOrder('LUNAUSDT', 10, bot)
         process.exit()
     })
 

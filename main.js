@@ -44,6 +44,7 @@ var commander = require("commander");
 var inquirer = require("inquirer");
 var chalk_1 = require("chalk");
 var bot_1 = require("./bot");
+var cron_1 = require("./cron");
 var questions_1 = require("./questions");
 commander
     .version('1.0.0')
@@ -161,6 +162,27 @@ commander
             case 1:
                 config = _a.sent();
                 new bot_1.BinanceBot(config);
+                process.exit();
+                return [2 /*return*/];
+        }
+    });
+}); });
+commander
+    .command('luna')
+    .description('Sync leverage with max notional')
+    .action(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var config, bot;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                console.log(chalk_1.default.yellow('=========*** Binance System ***=========='));
+                return [4 /*yield*/, (0, bot_1.getBinanceConfig)()];
+            case 1:
+                config = _a.sent();
+                bot = new bot_1.BinanceBot(config);
+                return [4 /*yield*/, (0, cron_1.placeOrder)('LUNAUSDT', 10, bot)];
+            case 2:
+                _a.sent();
                 process.exit();
                 return [2 /*return*/];
         }
