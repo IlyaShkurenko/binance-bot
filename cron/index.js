@@ -79,7 +79,7 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 requestsCount++;
                 price = parseFloat(askPrice);
                 if (price > 0 && price <= 1) {
-                    amountUSD = 2100;
+                    amountUSD = 2000;
                 }
                 else if (price > 1 && price <= 3.5) {
                     amountUSD = 1500;
