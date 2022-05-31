@@ -47,7 +47,7 @@ var tryCreateOrdersCount = 0;
     return __generator(this, function (_a) {
         bot = new bot_1.BinanceBot(data);
         console.log(Date.now());
-        cron.schedule("55 05 * * *", function () { return __awaiter(void 0, void 0, void 0, function () {
+        cron.schedule("38 05 * * *", function () { return __awaiter(void 0, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: // 0 * * * * = every houre at minute 0
@@ -79,7 +79,7 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                 requestsCount++;
                 price = parseFloat(askPrice);
                 if (price > 0 && price <= 1) {
-                    amountUSD = 2000;
+                    amountUSD = 1900;
                 }
                 else if (price > 1 && price <= 3.5) {
                     amountUSD = 1500;
@@ -97,7 +97,7 @@ var placeOrder = function (symbol, botInstance) { return __awaiter(void 0, void 
                     amountUSD = 100;
                 }
                 quantity = (amountUSD / askPrice).toFixed(2);
-                console.log("amount - ".concat(amountUSD, ", quantity - ").concat(quantity));
+                console.log("amount - ".concat(amountUSD, ", quantity - ").concat(quantity, ", price - ").concat(price));
                 if (!(!isNaN(parseFloat(quantity)) && parseFloat(quantity) !== Infinity)) return [3 /*break*/, 4];
                 tryCreateOrdersCount++;
                 return [4 /*yield*/, bot.binance.marketBuy(symbol, quantity)];
